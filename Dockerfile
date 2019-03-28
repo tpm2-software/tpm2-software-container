@@ -29,7 +29,10 @@ RUN apt-get update && \
     libcurl4-openssl-dev \
     dbus-x11 \
     python-yaml \
-    vim-common
+    vim-common \
+    python3-pip
+
+RUN pip3 install cpp-coveralls
 
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
 RUN update-alternatives --install /usr/bin/scan-build scan-build /usr/bin/scan-build-6.0 100
