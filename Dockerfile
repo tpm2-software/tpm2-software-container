@@ -62,3 +62,10 @@ WORKDIR $ibmtpm_name/src
 RUN CFLAGS="-I/usr/local/openssl/include" make -j$(nproc) \
 && cp tpm_server /usr/local/bin
 RUN rm -fr $ibmtpm_name/src $ibmtpm_name.tar.gz
+
+ARG uthash="2.1.0"
+WORKDIR /tmp
+RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/troydhanson/uthash/archive/v${uthash}.tar.gz" \
+	&& tar -xf v${uthash}.tar.gz \
+        && cp uthash-${uthash}/src/*.h /usr/include/ \
+RUN rm -fr v${uthash}.tar.gz
