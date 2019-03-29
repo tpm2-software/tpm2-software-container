@@ -29,8 +29,12 @@ RUN apt-get update && \
     libcurl4-openssl-dev \
     dbus-x11 \
     python-yaml \
+    python3-yaml \
     vim-common \
-    python3-pip
+    python3-pip \
+    libsqlite3-dev \
+    python-cryptography \
+    python3-cryptography
 
 RUN pip3 install cpp-coveralls
 
