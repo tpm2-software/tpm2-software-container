@@ -40,6 +40,7 @@ RUN apt-get update && \
 RUN pip3 install cpp-coveralls
 
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
+RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100
 RUN update-alternatives --install /usr/bin/scan-build scan-build /usr/bin/scan-build-6.0 100
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
