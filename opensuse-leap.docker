@@ -1,46 +1,37 @@
-FROM ubuntu:16.04
+FROM opensuse/leap
 
-RUN apt-get update && \
-    apt-get install -y \
-    autoconf-archive \
+RUN zypper ref
+RUN zypper -n in \
     curl \
-    libcmocka0 \
-    libcmocka-dev \
+    libcmocka-devel \
     net-tools \
-    build-essential \
     git \
     pkg-config \
     gcc \
-    g++ \
     m4 \
     libtool \
     automake \
-    libgcrypt20-dev \
-    libssl-dev \
-    autoconf \
-    gnulib \
+    libgcrypt-devel \
+    openssl-devel \
+    glib2-devel \
     wget \
     doxygen \
-    libdbus-1-dev \
-    libglib2.0-dev \
-    clang-6.0 \
-    clang-tools-6.0 \
+    clang \
     pandoc \
     lcov \
-    libcurl4-openssl-dev \
-    dbus-x11 \
-    python-yaml \
-    python3-yaml \
-    vim-common \
-    python3-pip \
-    libsqlite3-dev \
-    python-cryptography \
-    python3-cryptography
-
-RUN pip3 install cpp-coveralls
-
-RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
-RUN update-alternatives --install /usr/bin/scan-build scan-build /usr/bin/scan-build-6.0 100
+    libcurl-devel \
+    vim \
+    clang7-checker \
+    python2-PyYAML \
+    python2 \
+    python2-cryptography \
+    sqlite3-devel \
+    dbus-1-devel \
+    dbus-1-x11 \
+    xz \
+    gzip \
+    which \
+    gcc-c++
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
 WORKDIR /tmp

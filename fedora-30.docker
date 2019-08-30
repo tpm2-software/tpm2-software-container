@@ -1,46 +1,43 @@
-FROM ubuntu:16.04
+FROM fedora:30
 
-RUN apt-get update && \
-    apt-get install -y \
-    autoconf-archive \
-    curl \
-    libcmocka0 \
-    libcmocka-dev \
+# can return 100 if packages need update
+RUN yum check-update; \
+    rc=$?; \
+    if [ $rc -ne 100 ] && [ $rc -ne 0 ]; then \
+        echo "yum check-update failed: $rc"; \
+        exit $rc; \
+    fi
+
+RUN yum -y install \
+    libcmocka \
+    libcmocka-devel \
     net-tools \
-    build-essential \
     git \
     pkg-config \
     gcc \
-    g++ \
     m4 \
     libtool \
     automake \
-    libgcrypt20-dev \
-    libssl-dev \
-    autoconf \
+    libgcrypt-devel \
+    openssl-devel \
     gnulib \
+    glib2-devel \
     wget \
     doxygen \
-    libdbus-1-dev \
-    libglib2.0-dev \
-    clang-6.0 \
-    clang-tools-6.0 \
+    dbus-libs \
+    dbus-devel \
+    clang \
+    clang-analyzer \
+    clang-tools-extra \
     pandoc \
     lcov \
-    libcurl4-openssl-dev \
+    libcurl-devel \
     dbus-x11 \
-    python-yaml \
-    python3-yaml \
-    vim-common \
+    python3-pyyaml \
+    vim \
     python3-pip \
-    libsqlite3-dev \
-    python-cryptography \
+    libsq3-devel \
     python3-cryptography
-
-RUN pip3 install cpp-coveralls
-
-RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
-RUN update-alternatives --install /usr/bin/scan-build scan-build /usr/bin/scan-build-6.0 100
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
 WORKDIR /tmp
@@ -70,3 +67,11 @@ RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/troydha
 	&& tar -xf v${uthash}.tar.gz \
         && cp uthash-${uthash}/src/*.h /usr/include/
 RUN rm -rf uthash-${uthash}/ v${uthash}.tar.gz
+
+# make install goes into /usr/local/lib/pkgconfig which is non-standard
+# Set this so ./configure can find things and we don't have to worry about prefix changes
+# to build instructions
+ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+
+# we need/check for just python, Fedora comes with python3 so just symlink it
+RUN ln -s /usr/bin/python3 /usr/bin/python
