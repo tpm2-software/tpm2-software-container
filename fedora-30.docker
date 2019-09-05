@@ -39,7 +39,9 @@ RUN yum -y install \
     libsq3-devel \
     python3-cryptography \
     iproute \
-    procps
+    procps \
+    libasan \
+    libubsan
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
 WORKDIR /tmp
