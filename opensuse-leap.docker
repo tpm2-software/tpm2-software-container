@@ -31,7 +31,8 @@ RUN zypper -n in \
     xz \
     gzip \
     which \
-    gcc-c++
+    gcc-c++ \
+    iproute
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
 WORKDIR /tmp
