@@ -41,8 +41,7 @@ RUN yum -y install \
     iproute \
     procps \
     libasan \
-    libubsan \
-    perl-Digest-SHA
+    libubsan
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
 WORKDIR /tmp
