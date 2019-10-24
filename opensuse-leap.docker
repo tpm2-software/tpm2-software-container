@@ -32,7 +32,13 @@ RUN zypper -n in \
     gzip \
     which \
     gcc-c++ \
-    iproute
+    iproute \
+    libtasn1-devel \
+    socat \
+    libseccomp-devel \
+    expect \
+    gawk \
+    net-tools-deprecated
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
 WORKDIR /tmp
@@ -55,6 +61,20 @@ WORKDIR $ibmtpm_name/src
 RUN CFLAGS="-I/usr/local/openssl/include" make -j$(nproc) \
 && cp tpm_server /usr/local/bin
 RUN rm -fr $ibmtpm_name/src $ibmtpm_name.tar.gz
+
+WORKDIR /tmp
+RUN git clone https://github.com/stefanberger/libtpms.git
+RUN (cd libtpms \
+	&& ./autogen.sh --prefix=/usr --libdir=/usr/lib64 --with-openssl --with-tpm2 \
+	&& make -j$(nproc) \
+	&& make install)
+
+WORKDIR /tmp
+RUN git clone https://github.com/stefanberger/swtpm.git
+RUN cd swtpm \
+	&& ./autogen.sh --prefix=/usr \
+	&& make -j$(nproc) CFLAGS="-I/usr/include/libseccomp/" \
+	&& make install
 
 ARG uthash="2.1.0"
 WORKDIR /tmp

@@ -37,6 +37,11 @@ RUN apt-get update && \
     python-cryptography \
     python3-cryptography \
     libengine-pkcs11-openssl
+    libtasn1-6-dev \
+    socat \
+    libseccomp-dev \
+    expect \
+    gawk
 
 RUN pip3 install cpp-coveralls pyasn1_modules
 
@@ -65,6 +70,20 @@ WORKDIR $ibmtpm_name/src
 RUN CFLAGS="-I/usr/local/openssl/include" make -j$(nproc) \
 && cp tpm_server /usr/local/bin
 RUN rm -fr $ibmtpm_name/src $ibmtpm_name.tar.gz
+
+WORKDIR /tmp
+RUN git clone https://github.com/stefanberger/libtpms.git
+RUN cd libtpms \
+	&& ./autogen.sh --prefix=/usr --with-openssl --with-tpm2 \
+	&& make -j$(nproc) \
+	&& make install
+
+WORKDIR /tmp
+RUN git clone https://github.com/stefanberger/swtpm.git
+RUN cd swtpm \
+	&& ./autogen.sh --prefix=/usr \
+	&& make -j$(nproc) \
+	&& make install || true
 
 ARG uthash="2.1.0"
 WORKDIR /tmp
