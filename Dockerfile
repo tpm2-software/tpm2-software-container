@@ -38,7 +38,7 @@ RUN apt-get update && \
     python3-cryptography \
     libengine-pkcs11-openssl
 
-RUN pip3 install cpp-coveralls
+RUN pip3 install cpp-coveralls pyasn1_modules
 
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100
