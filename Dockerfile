@@ -36,18 +36,25 @@ RUN apt-get update && \
     libsqlite3-dev \
     python-cryptography \
     python3-cryptography \
-    libengine-pkcs11-openssl
+    libengine-pkcs11-openssl \
     libtasn1-6-dev \
     socat \
     libseccomp-dev \
     expect \
-    gawk
+    gawk \
+    python-pip
 
-RUN pip3 install cpp-coveralls pyasn1_modules
+RUN pip  install cpp-coveralls pyasn1 pyasn1_modules
+RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules
+RUN pip install --upgrade pyasn1-modules
 
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100
 RUN update-alternatives --install /usr/bin/scan-build scan-build /usr/bin/scan-build-6.0 100
+
+# there's a bug where old versions of libpkcs11 engine were install to the wrong directory, but
+# we don't want to export the variable and kill off the default engines, so symlink the wrong one
+RUN ln -s /usr/lib/ssl/engines/libpkcs11.so /usr/lib/x86_64-linux-gnu/openssl-1.0.0/engines/
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
 WORKDIR /tmp
