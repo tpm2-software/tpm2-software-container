@@ -47,7 +47,7 @@ RUN apt-get update && \
 RUN pip  install cpp-coveralls pyasn1 pyasn1_modules
 RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules
 RUN pip install --upgrade pyasn1-modules
-RUN pip install --upgrade pyasn1-modules
+RUN pip3 install --upgrade pyasn1-modules
 
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100
