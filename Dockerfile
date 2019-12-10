@@ -43,7 +43,8 @@ RUN apt-get update && \
     expect \
     gawk \
     python-pip \
-    libyaml-dev
+    libyaml-dev \
+    opensc
 
 RUN pip  install cpp-coveralls pyasn1 pyasn1_modules
 RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules
