@@ -47,7 +47,8 @@ RUN yum -y install \
     socat \
     libseccomp-devel \
     expect \
-    gawk
+    gawk \
+    json-c-devel
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
 WORKDIR /tmp
