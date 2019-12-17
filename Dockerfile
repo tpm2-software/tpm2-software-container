@@ -44,7 +44,8 @@ RUN apt-get update && \
     gawk \
     python-pip \
     libyaml-dev \
-    opensc
+    opensc \
+    libjson-c-dev
 
 RUN pip  install cpp-coveralls pyasn1 pyasn1_modules
 RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules

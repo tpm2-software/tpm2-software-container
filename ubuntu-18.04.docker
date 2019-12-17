@@ -42,7 +42,8 @@ RUN apt-get update && \
     socat \
     libseccomp-dev \
     expect \
-    gawk
+    gawk \
+    libjson-c-dev
 
 RUN pip3 install cpp-coveralls
 

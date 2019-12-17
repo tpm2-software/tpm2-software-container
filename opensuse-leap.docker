@@ -38,7 +38,8 @@ RUN zypper -n in \
     libseccomp-devel \
     expect \
     gawk \
-    net-tools-deprecated
+    net-tools-deprecated \
+    libjson-c-devel
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
 WORKDIR /tmp
