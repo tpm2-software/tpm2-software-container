@@ -102,3 +102,14 @@ RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/troydha
 	&& tar -xf v${uthash}.tar.gz \
         && cp uthash-${uthash}/src/*.h /usr/include/
 RUN rm -rf uthash-${uthash}/ v${uthash}.tar.gz
+
+ARG pyver="3.7.2"
+WORKDIR /tmp
+RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/python/cpython/archive/v${pyver}.tar.gz" \
+	&& tar -xf v${pyver}.tar.gz
+RUN cd cpython-${pyver}/ \
+	&& ./configure \
+	&& make -j$(nproc) \
+	&& make altinstall
+
+RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules
