@@ -47,7 +47,8 @@ RUN apt-get update && \
     opensc \
     libjson-c-dev \
     default-jre \
-    default-jdk
+    default-jdk \
+    sqlite3
 
 RUN pip  install cpp-coveralls pyasn1 pyasn1_modules
 RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules
