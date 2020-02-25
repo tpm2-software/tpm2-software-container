@@ -48,7 +48,8 @@ RUN apt-get update && \
     libjson-c-dev \
     default-jre \
     default-jdk \
-    sqlite3
+    sqlite3 \
+    libnss3-tools
 
 RUN pip  install cpp-coveralls pyasn1 pyasn1_modules
 RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules
