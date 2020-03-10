@@ -39,7 +39,8 @@ RUN zypper -n in \
     expect \
     gawk \
     net-tools-deprecated \
-    libjson-c-devel
+    libjson-c-devel \
+    libuuid-devel
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
 WORKDIR /tmp

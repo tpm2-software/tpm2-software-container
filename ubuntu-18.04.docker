@@ -51,7 +51,8 @@ RUN apt-get update && \
     libnss3-tools \
     python3-pip \
     python-pip \
-    libyaml-dev
+    libyaml-dev \
+    uuid-dev
 
 RUN pip  install cpp-coveralls pyasn1 pyasn1_modules
 RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules
