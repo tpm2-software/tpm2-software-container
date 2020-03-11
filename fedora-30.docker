@@ -48,7 +48,15 @@ RUN yum -y install \
     libseccomp-devel \
     expect \
     gawk \
-    json-c-devel
+    json-c-devel \
+    libyaml-devel \
+    nss-tools \
+    expect \
+    opensc \
+    java-openjdk \
+    java-openjdk-devel
+
+RUN python3 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
 WORKDIR /tmp
@@ -92,6 +100,16 @@ RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/troydha
 	&& tar -xf v${uthash}.tar.gz \
         && cp uthash-${uthash}/src/*.h /usr/include/
 RUN rm -rf uthash-${uthash}/ v${uthash}.tar.gz
+
+ARG jver="4.13"
+WORKDIR /java
+RUN wget --quiet --show-progress --progress=dot:giga -O junit.jar "https://search.maven.org/remotecontent?filepath=junit/junit/4.13/junit-${jver}.jar"
+
+ARG hver="2.2"
+WORKDIR /java
+RUN wget --quiet --show-progress --progress=dot:giga -O hamcrest.jar https://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest/${hver}/hamcrest-${hver}.jar
+
+ENV CLASSPATH=/java/hamcrest.jar:/java/junit.jar
 
 # make install goes into /usr/local/lib/pkgconfig which is non-standard
 # Set this so ./configure can find things and we don't have to worry about prefix changes
