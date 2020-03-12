@@ -108,6 +108,11 @@ RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/troydha
         && cp uthash-${uthash}/src/*.h /usr/include/
 RUN rm -rf uthash-${uthash}/ v${uthash}.tar.gz
 
+# Update automake to a non-broken AM_PYTHON_PATH checking version
+RUN wget http://mirrors.kernel.org/ubuntu/pool/main/a/automake-1.16/automake_1.16.1-4ubuntu3_all.deb \
+    && sha256sum automake_1.16.1-4ubuntu3_all.deb | grep -q '^2380a2d1c6d5a67d0be1b98ff79394bfb2a54c5c00062c57c84a95cd7ec885bf' \
+    && dpkg -i automake_1.16.1-4ubuntu3_all.deb
+
 ARG pyver="3.7.2"
 WORKDIR /tmp
 RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/python/cpython/archive/v${pyver}.tar.gz" \
