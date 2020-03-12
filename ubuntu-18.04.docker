@@ -14,8 +14,6 @@ RUN apt-get update && \
     gcc \
     g++ \
     m4 \
-    libtool \
-    automake \
     libgcrypt20-dev \
     libssl-dev \
     autoconf \
@@ -105,6 +103,18 @@ RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/troydha
 	&& tar -xf v${uthash}.tar.gz \
         && cp uthash-${uthash}/src/*.h /usr/include/
 RUN rm -rf uthash-${uthash}/ v${uthash}.tar.gz
+
+# Automake python.m4 is patched on many systems to be able to detect version >= 3.7. However, OpenSuse's is unmodified
+# from upstream, and will not work. So we get the one with the fix, and install it
+ARG aver=1.16
+WORKDIR /tmp
+RUN wget --quiet --show-progress --progress=dot:giga "https://ftp.gnu.org/gnu/automake/automake-${aver}.tar.gz"
+RUN tar -xavf "automake-${aver}.tar.gz" \
+    && cd "automake-${aver}" \
+    && autoreconf -ivf \
+    && ./configure \
+    && make -j$(nproc) \
+    && make install
 
 ARG pyver="3.7.2"
 WORKDIR /tmp

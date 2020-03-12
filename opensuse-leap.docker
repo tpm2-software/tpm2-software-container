@@ -40,7 +40,16 @@ RUN zypper -n in \
     gawk \
     net-tools-deprecated \
     libjson-c-devel \
-    libuuid-devel
+    libuuid-devel \
+    libyaml-devel \
+    mozilla-nss-tools \
+    opensc \
+    java-11-openjdk-devel \
+    java-11-openjdk \
+    libffi-devel \
+    patch \
+    sqlite3 \
+    openssl-engine-libp11
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
 WORKDIR /tmp
@@ -84,3 +93,32 @@ RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/troydha
 	&& tar -xf v${uthash}.tar.gz \
         && cp uthash-${uthash}/src/*.h /usr/include/
 RUN rm -rf uthash-${uthash}/ v${uthash}.tar.gz
+
+# Fix Automake AM_PYTHON_PATH missing python3.6 interpreter
+COPY patches/python.patch /tmp/python.patch
+RUN stat /usr/share/aclocal-1.15/python.m4
+RUN patch -d / -p1 < /tmp/python.patch
+RUN rm /tmp/python.patch
+
+ARG pyver="3.7.2"
+WORKDIR /tmp
+RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/python/cpython/archive/v${pyver}.tar.gz" \
+        && tar -xf v${pyver}.tar.gz
+RUN cd cpython-${pyver}/ \
+        && ./configure \
+        && make -j$(nproc) \
+        && make altinstall
+
+RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules
+
+ARG jver="4.13"
+WORKDIR /java
+RUN wget --quiet --show-progress --progress=dot:giga -O junit.jar "https://search.maven.org/remotecontent?filepath=junit/junit/4.13/junit-${jver}.jar"
+
+ARG hver="2.2"
+WORKDIR /java
+RUN wget --quiet --show-progress --progress=dot:giga -O hamcrest.jar https://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest/${hver}/hamcrest-${hver}.jar
+
+ENV CLASSPATH=/java/hamcrest.jar:/java/junit.jar
+
+WORKDIR /
