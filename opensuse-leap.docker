@@ -49,7 +49,8 @@ RUN zypper -n in \
     libffi-devel \
     patch \
     sqlite3 \
-    openssl-engine-libp11
+    openssl-engine-libp11 \
+    gnutls
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
 WORKDIR /tmp
