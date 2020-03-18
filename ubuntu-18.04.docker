@@ -53,7 +53,8 @@ RUN apt-get update && \
     python-pip \
     libyaml-dev \
     uuid-dev \
-    opensc
+    opensc \
+    gnutls-bin
 
 RUN pip  install cpp-coveralls pyasn1 pyasn1_modules
 RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules

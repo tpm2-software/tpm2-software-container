@@ -50,7 +50,8 @@ RUN apt-get update && \
     default-jdk \
     sqlite3 \
     libnss3-tools \
-    uuid-dev
+    uuid-dev \
+    gnutls-bin
 
 RUN pip  install cpp-coveralls pyasn1 pyasn1_modules
 RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules

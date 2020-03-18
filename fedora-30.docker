@@ -54,7 +54,8 @@ RUN yum -y install \
     expect \
     opensc \
     java-openjdk \
-    java-openjdk-devel
+    java-openjdk-devel \
+    gnutls-utils
 
 RUN python3 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules
 
