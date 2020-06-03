@@ -74,10 +74,10 @@ RUN wget --quiet --show-progress --progress=dot:giga "http://mirror.kumi.systems
         && make -j $(nproc) && make install
 RUN rm -fr $autoconf_archive.tar.xz
 
-ARG ibmtpm_name=ibmtpm1563
+ARG ibmtpm_name=ibmtpm1628
 WORKDIR /tmp
 RUN wget --quiet --show-progress --progress=dot:giga "https://downloads.sourceforge.net/project/ibmswtpm2/$ibmtpm_name.tar.gz" \
-	&& sha256sum $ibmtpm_name.tar.gz | grep ^fc3a17f8315c1f47670764f2384943afc0d3ba1e9a0422dacb08d455733bd1e9 \
+	&& sha256sum $ibmtpm_name.tar.gz | grep ^a8e874e7a1ae13a1290d7679d846281f72d0eb6a5e4cfbafca5297dbf4e29ea3 \
 	&& mkdir -p $ibmtpm_name \
 	&& tar xvf $ibmtpm_name.tar.gz -C $ibmtpm_name \
 	&& rm $ibmtpm_name.tar.gz
