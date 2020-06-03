@@ -99,8 +99,14 @@ ARG uthash="2.1.0"
 WORKDIR /tmp
 RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/troydhanson/uthash/archive/v${uthash}.tar.gz" \
 	&& tar -xf v${uthash}.tar.gz \
-        && cp uthash-${uthash}/src/*.h /usr/include/
+    && cp uthash-${uthash}/src/*.h /usr/include/
 RUN rm -rf uthash-${uthash}/ v${uthash}.tar.gz
+# Scanbuild complains about a div by zero in uthash 2.1.0
+# This has been fixed on master, so use the dev version until
+# new version ofuthash will be out. See https://github.com/troydhanson/uthash/issues/205
+RUN git clone https://github.com/tstruk/uthash.git \
+    && cp uthash/src/*.h /usr/include/
+RUN rm -rf uthash
 
 ARG jver="4.13"
 WORKDIR /java
