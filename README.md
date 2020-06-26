@@ -19,7 +19,13 @@ docker run -it <IMAGE ID> /bin/bash
 or to run the tpm2-tools CI sequence locally:
 
 ```
-docker run --env /path/to/tpm2-tools/.ci/docker.env -v /path/to/tpm2-tools:/workspace/tpm2-tools <IMAGE ID> /bin/bash -c '/workspace/tpm2-tools/.ci/docker.run'
+docker run --rm --env-file /path/to/tpm2-tools/.ci/docker.env -v /path/to/tpm2-tools:/workspace/tpm2-tools <IMAGE ID> /bin/bash -c '/workspace/tpm2-tools/.ci/docker.run'
+```
+
+or to run the tpm2-tss CI sequence locally
+
+```
+docker run --rm --env-file /path/to/tpm2-tss/.ci/docker.env -v /path/to/tpm2-tss:/workspace/tpm2-tss <IMAGE ID> /bin/bash -c '/workspace/tpm2-tss/.ci/docker.run'
 ```
 
 ## Auto builds
