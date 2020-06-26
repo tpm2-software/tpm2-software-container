@@ -50,6 +50,7 @@ RUN apt-get update && \
     libnss3-tools \
     python3-pip \
     libyaml-dev \
+    libmbedtls-dev \
     uuid-dev \
     opensc \
     gnutls-bin
