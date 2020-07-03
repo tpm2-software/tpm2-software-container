@@ -99,6 +99,14 @@ RUN cd swtpm \
 	&& make -j$(nproc) \
 	&& make install
 
+WORKDIR /tmp
+RUN git clone https://github.com/tpm2-software/tpm2-tss-engine.git
+RUN cd tpm2-tss-engine \
+    && ./bootstrap \
+    && ./configure \
+    && make -j$(nproc) \
+    && make install
+
 ARG uthash="2.1.0"
 WORKDIR /tmp
 RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/troydhanson/uthash/archive/v${uthash}.tar.gz" \
