@@ -15,7 +15,6 @@ RUN apt-get update && \
     m4 \
     libtool \
     automake \
-    libgcrypt20-dev \
     libssl-dev \
     autoconf \
     gnulib \

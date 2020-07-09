@@ -18,7 +18,6 @@ RUN yum -y install \
     m4 \
     libtool \
     automake \
-    libgcrypt-devel \
     openssl-devel \
     gnulib \
     glib2-devel \
