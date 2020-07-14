@@ -11,6 +11,7 @@ RUN zypper -n in \
     m4 \
     libtool \
     automake \
+    libgcrypt-devel \
     openssl-devel \
     glib2-devel \
     wget \
