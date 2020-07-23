@@ -77,6 +77,8 @@ RUN wget --quiet --show-progress --progress=dot:giga "https://downloads.sourcefo
 	&& tar xvf $ibmtpm_name.tar.gz -C $ibmtpm_name \
 	&& rm $ibmtpm_name.tar.gz
 WORKDIR $ibmtpm_name/src
+RUN wget https://sourceforge.net/p/ibmswtpm2/tickets/14/attachment/TPM2_ACT_SetTimeout.patch -O - > fix.patch
+RUN patch < fix.patch
 RUN sed -i 's/-DTPM_NUVOTON/-DTPM_NUVOTON $(CFLAGS)/' makefile
 RUN CFLAGS="-DNV_MEMORY_SIZE=32768 -DMIN_EVICT_OBJECTS=7" make -j$(nproc) \
 && cp tpm_server /usr/local/bin
