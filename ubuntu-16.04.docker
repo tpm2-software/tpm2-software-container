@@ -76,16 +76,14 @@ RUN wget --quiet --show-progress --progress=dot:giga "http://mirror.kumi.systems
         && make -j $(nproc) && make install
 RUN rm -fr $autoconf_archive.tar.xz
 
-ARG ibmtpm_name=ibmtpm1628
+ARG ibmtpm_name=ibmtpm1637
 WORKDIR /tmp
 RUN wget --quiet --show-progress --progress=dot:giga "https://downloads.sourceforge.net/project/ibmswtpm2/$ibmtpm_name.tar.gz" \
-	&& sha256sum $ibmtpm_name.tar.gz | grep ^a8e874e7a1ae13a1290d7679d846281f72d0eb6a5e4cfbafca5297dbf4e29ea3 \
+	&& sha256sum $ibmtpm_name.tar.gz | grep ^dd3a4c3f7724243bc9ebcd5c39bbf87b82c696d1c1241cb8e5883534f6e2e327 \
 	&& mkdir -p $ibmtpm_name \
 	&& tar xvf $ibmtpm_name.tar.gz -C $ibmtpm_name \
 	&& rm $ibmtpm_name.tar.gz
 WORKDIR $ibmtpm_name/src
-RUN wget https://sourceforge.net/p/ibmswtpm2/tickets/14/attachment/TPM2_ACT_SetTimeout.patch -O - > fix.patch
-RUN patch < fix.patch
 RUN sed -i 's/-DTPM_NUVOTON/-DTPM_NUVOTON $(CFLAGS)/' makefile
 RUN CFLAGS="-DNV_MEMORY_SIZE=32768 -DMIN_EVICT_OBJECTS=7" make -j$(nproc) \
 && cp tpm_server /usr/local/bin
