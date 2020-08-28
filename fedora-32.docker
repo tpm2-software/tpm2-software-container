@@ -53,7 +53,7 @@ RUN dnf -y install \
     nss-tools \
     expect \
     opensc \
-	java-latest-openjdk \
+    java-latest-openjdk \
     java-latest-openjdk-devel \
     gnutls-utils
 
