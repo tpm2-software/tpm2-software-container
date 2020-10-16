@@ -58,7 +58,7 @@ RUN yum -y install \
     gnutls-utils \ 
     uuid-devel
 
-RUN python3 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules
+RUN python3 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
 
 ARG autoconf_archive=autoconf-archive-2018.03.13
 WORKDIR /tmp
