@@ -56,8 +56,8 @@ RUN apt-get update && \
     opensc \
     gnutls-bin
 
-RUN pip  install cpp-coveralls pyasn1 pyasn1_modules
-RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules
+RUN pip  install cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
+RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
 RUN pip install --upgrade pyasn1-modules
 RUN pip3 install --upgrade pyasn1-modules
 
@@ -117,7 +117,7 @@ RUN cd cpython-${pyver}/ \
 	&& make -j$(nproc) \
 	&& make altinstall
 
-RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules
+RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
 
 ARG jver="4.13"
 WORKDIR /java
