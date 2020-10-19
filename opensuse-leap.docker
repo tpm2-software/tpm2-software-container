@@ -62,6 +62,7 @@ RUN wget --quiet --show-progress --progress=dot:giga "http://mirror.kumi.systems
         && make -j $(nproc) && make install
 RUN rm -fr $autoconf_archive.tar.xz
 
+# Get python before swtpm as it needs setuptools
 ARG pyver="3.7.2"
 WORKDIR /tmp
 RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/python/cpython/archive/v${pyver}.tar.gz" \
