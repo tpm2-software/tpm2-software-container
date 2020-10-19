@@ -62,6 +62,18 @@ RUN wget --quiet --show-progress --progress=dot:giga "http://mirror.kumi.systems
         && make -j $(nproc) && make install
 RUN rm -fr $autoconf_archive.tar.xz
 
+# Get python before swtpm as it needs setuptools
+ARG pyver="3.7.2"
+WORKDIR /tmp
+RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/python/cpython/archive/v${pyver}.tar.gz" \
+        && tar -xf v${pyver}.tar.gz
+RUN cd cpython-${pyver}/ \
+        && ./configure \
+        && make -j$(nproc) \
+        && make altinstall
+
+RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11 setuptools
+
 ARG ibmtpm_name=ibmtpm1637
 WORKDIR /tmp
 RUN wget --quiet --show-progress --progress=dot:giga "https://downloads.sourceforge.net/project/ibmswtpm2/$ibmtpm_name.tar.gz" \
@@ -101,17 +113,6 @@ COPY patches/python.patch /tmp/python.patch
 RUN stat /usr/share/aclocal-1.15/python.m4
 RUN patch -d / -p1 < /tmp/python.patch
 RUN rm /tmp/python.patch
-
-ARG pyver="3.7.2"
-WORKDIR /tmp
-RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/python/cpython/archive/v${pyver}.tar.gz" \
-        && tar -xf v${pyver}.tar.gz
-RUN cd cpython-${pyver}/ \
-        && ./configure \
-        && make -j$(nproc) \
-        && make altinstall
-
-RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
 
 ARG jver="4.13"
 WORKDIR /java
