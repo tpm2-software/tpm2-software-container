@@ -126,7 +126,4 @@ ENV CLASSPATH=/java/hamcrest.jar:/java/junit.jar
 # to build instructions
 ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
-# we need/check for just python, Fedora comes with python3 so just symlink it
-RUN ln -s /usr/bin/python3 /usr/bin/python
-
 WORKDIR /
