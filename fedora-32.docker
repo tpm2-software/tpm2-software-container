@@ -57,7 +57,8 @@ RUN dnf -y install \
     java-latest-openjdk-devel \
     gnutls-utils \
     libuuid-devel \
-    python3-devel
+    python3-devel \
+    openssl-pkcs11
 
 RUN python3 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
 
