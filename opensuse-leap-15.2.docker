@@ -72,7 +72,7 @@ RUN cd cpython-${pyver}/ \
         && make -j$(nproc) \
         && make altinstall
 
-RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11 setuptools
+RUN pip3.7 install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11 setuptools
 
 ARG ibmtpm_name=ibmtpm1637
 WORKDIR /tmp
