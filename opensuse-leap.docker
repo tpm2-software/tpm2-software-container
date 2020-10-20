@@ -78,6 +78,9 @@ RUN update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python
 
 RUN pip3.7 install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11 setuptools
 
+# swtpm configure checks for pip3, so provide it via a symlink to pip3.7
+RUN ln -s /usr/local/bin/pip3.7 /usr/local/bin/pip3
+
 ARG ibmtpm_name=ibmtpm1637
 WORKDIR /tmp
 RUN wget --quiet --show-progress --progress=dot:giga "https://downloads.sourceforge.net/project/ibmswtpm2/$ibmtpm_name.tar.gz" \
