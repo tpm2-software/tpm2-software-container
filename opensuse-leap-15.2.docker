@@ -111,7 +111,7 @@ RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/troydha
         && cp uthash-${uthash}/src/*.h /usr/include/
 RUN rm -rf uthash-${uthash}/ v${uthash}.tar.gz
 
-# Fix Automake AM_PYTHON_PATH missing python3.6 interpreter
+# Fix Automake AM_PYTHON_PATH missing python3.7 interpreter
 COPY patches/python.patch /tmp/python.patch
 RUN stat /usr/share/aclocal-1.15/python.m4
 RUN patch -d / -p1 < /tmp/python.patch
