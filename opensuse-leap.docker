@@ -71,6 +71,10 @@ RUN cd cpython-${pyver}/ \
         && make -j$(nproc) \
         && make altinstall
 
+# Some other packages bring in python and python3, which at this time is too old, so we want
+# python3 to be the 3.7 version just installed.
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.7 0
+
 RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11 setuptools
 
 ARG ibmtpm_name=ibmtpm1637
