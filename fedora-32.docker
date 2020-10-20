@@ -53,8 +53,8 @@ RUN dnf -y install \
     nss-tools \
     expect \
     opensc \
-    java-latest-openjdk \
-    java-latest-openjdk-devel \
+    java-latest-openjdk-1:13.0.2.8-1.rolling.fc32 \
+    java-latest-openjdk-devel-1:13.0.2.8-1.rolling.fc32 \
     gnutls-utils \
     libuuid-devel \
     python3-devel \
