@@ -106,17 +106,6 @@ RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/troydha
         && cp uthash-${uthash}/src/*.h /usr/include/
 RUN rm -rf uthash-${uthash}/ v${uthash}.tar.gz
 
-ARG pyver="3.7.2"
-WORKDIR /tmp
-RUN wget --quiet --show-progress --progress=dot:giga "https://github.com/python/cpython/archive/v${pyver}.tar.gz" \
-	&& tar -xf v${pyver}.tar.gz
-RUN cd cpython-${pyver}/ \
-	&& ./configure \
-	&& make -j$(nproc) \
-	&& make altinstall
-
-RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules
-
 ARG jver="4.13"
 WORKDIR /java
 RUN wget --quiet --show-progress --progress=dot:giga -O junit.jar "https://search.maven.org/remotecontent?filepath=junit/junit/4.13/junit-${jver}.jar"
