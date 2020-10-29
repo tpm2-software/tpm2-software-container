@@ -1,0 +1,116 @@
+name: Publish Docker image
+on:
+  push
+jobs:
+  publish-ubuntu-16-04:
+    name: Push Docker image Ubuntu-16-04 to GitHub Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./ubuntu-16.04.docker
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: tpm2-software/tpm2-software-container/ubuntu-16.04
+          tags: user/app:latest
+  publish-ubuntu-18-04:
+    name: Push Docker image Ubuntu-18-04 to GitHub Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./ubuntu-18.04.docker
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: tpm2-software/tpm2-software-container/ubuntu-18.04
+          tags: user/app:latest
+  publish-ubuntu-20-04:
+    name: Push Docker image Ubuntu-20-04 to GitHub Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./ubuntu-20.04.docker
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: tpm2-software/tpm2-software-container/ubuntu-20.04
+          tags: user/app:latest
+  publish-opensuse-leap-15-2:
+    name: Push Docker image opensuse-leap-15-2 to GitHub Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./opensuse-leap-15.2.docker
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: tpm2-software/tpm2-software-container/opensuse-leap-15.2
+          tags: user/app:latest
+  publish-opensuse-leap:
+    name: Push Docker image opensuse-leap to GitHub Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./opensuse-leap.docker
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: tpm2-software/tpm2-software-container/opensuse-leap
+          tags: user/app:latest
+  publish-fedora-30:
+    name: Push Docker image fedora-30 to GitHub Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./fedora-30.docker
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: tpm2-software/tpm2-software-container/fedora-30
+          tags: user/app:latest
+  publish-fedora-32:
+    name: Push Docker image fedora-32 to GitHub Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./fedora-32.docker
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: tpm2-software/tpm2-software-container/fedora-32
+          tags: user/app:latest
