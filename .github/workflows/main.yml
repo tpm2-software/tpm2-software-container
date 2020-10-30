@@ -1,4 +1,4 @@
-name: Publish Docker image
+name: Build and Publish Docker Images to Github Container Registry
 on:
   push
 jobs:
@@ -23,6 +23,7 @@ jobs:
         name: Push to GitHub Packages
         uses: docker/build-push-action@v2
         with:
+          push: true
           context: .
           file: ./ubuntu-16.04.docker
-          tags: ghcr.io/tpm2-software/tpm2-software-container/ubuntu-16.04:latest
+          tags: ubuntu-16.04:latest
