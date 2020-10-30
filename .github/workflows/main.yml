@@ -26,4 +26,4 @@ jobs:
           push: true
           context: .
           file: ./ubuntu-16.04.docker
-          tags: ubuntu-16.04:latest
+          tags: ghcr.io/tpm2-software/ubuntu-16.04:latest
