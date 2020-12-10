@@ -123,4 +123,9 @@ ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 # we need/check for just python, Fedora comes with python3 so just symlink it
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
+# Add the TSS install path to the ldconf, so we don't have to twiddle things in
+# configure/make/make installscripts.
+RUN echo "/usr/local/lib" >  /etc/ld.so.conf.d/tss.conf
+RUN ldconfig
+
 WORKDIR /
