@@ -127,4 +127,9 @@ ENV CLASSPATH=/java/hamcrest.jar:/java/junit.jar
 # to build instructions
 ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
+# Add the TSS install path to the ldconf, so we don't have to twiddle things in
+# configure/make/make installscripts.
+RUN echo "/usr/local/lib" >  /etc/ld.so.conf.d/tss.conf
+RUN ldconfig
+
 WORKDIR /
