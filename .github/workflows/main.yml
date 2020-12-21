@@ -2,9 +2,12 @@ name: Build and Publish Docker Images to Github Container Registry
 on:
   push
 jobs:
-  publish-ubuntu-16-04:
-    name: Build and Push Docker image ubuntu-16.04 to GitHub Packages
+  publish-image:
+    name: Build and Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro: [ "fedora-30", "fedora-32", "opensuse-leap-15", "opensuse-leap", "ubuntu-16.04", "ubuntu-18.04", "ubuntu-20.04" ]
     steps:
       -
         name: Check out the repo
@@ -25,155 +28,5 @@ jobs:
         with:
           push: true
           context: .
-          file: ./ubuntu-16.04.docker
-          tags: ghcr.io/tpm2-software/ubuntu-16.04:latest
-  publish-ubuntu-18-04:
-    name: Build and Push Docker image ubuntu-18.04 to GitHub Packages
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Check out the repo
-        uses: actions/checkout@v2
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-      -
-        name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.CR_PAT }}
-      -
-        name: Push to GitHub Packages
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          context: .
-          file: ./ubuntu-18.04.docker
-          tags: ghcr.io/tpm2-software/ubuntu-18.04:latest
-  publish-ubuntu-20-04:
-    name: Build and Push Docker image ubuntu-20.04 to GitHub Packages
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Check out the repo
-        uses: actions/checkout@v2
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-      -
-        name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.CR_PAT }}
-      -
-        name: Push to GitHub Packages
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          context: .
-          file: ./ubuntu-20.04.docker
-          tags: ghcr.io/tpm2-software/ubuntu-20.04:latest
-  publish-opensuse-leap-15-2:
-    name: Build and Push Docker image opensuse-leap-15.2 to GitHub Packages
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Check out the repo
-        uses: actions/checkout@v2
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-      -
-        name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.CR_PAT }}
-      -
-        name: Push to GitHub Packages
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          context: .
-          file: ./opensuse-leap-15.2.docker
-          tags: ghcr.io/tpm2-software/opensuse-leap-15.2:latest
-  publish-opensuse-leap:
-    name: Build and Push Docker image opensuse-leap to GitHub Packages
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Check out the repo
-        uses: actions/checkout@v2
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-      -
-        name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.CR_PAT }}
-      -
-        name: Push to GitHub Packages
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          context: .
-          file: ./opensuse-leap.docker
-          tags: ghcr.io/tpm2-software/opensuse-leap:latest
-  publish-fedora-30:
-    name: Build and Push Docker image fedora-30 to GitHub Packages
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Check out the repo
-        uses: actions/checkout@v2
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-      -
-        name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.CR_PAT }}
-      -
-        name: Push to GitHub Packages
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          context: .
-          file: ./fedora-30.docker
-          tags: ghcr.io/tpm2-software/fedora-30:latest
-  publish-fedora-32:
-    name: Build and Push Docker image fedora-32 to GitHub Packages
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Check out the repo
-        uses: actions/checkout@v2
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-      -
-        name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.CR_PAT }}
-      -
-        name: Push to GitHub Packages
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          context: .
-          file: ./fedora-32.docker
-          tags: ghcr.io/tpm2-software/fedora-32:latest
+          file: ./${{ matrix.DOCKER_IMAGE }}.docker
+          tags: ghcr.io/tpm2-software/${{ matrix.DOCKER_IMAGE }}:latest
