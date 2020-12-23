@@ -29,20 +29,14 @@ RUN apt-get update && \
     lcov \
     libcurl4-openssl-dev \
     dbus-x11 \
-    python-yaml \
-    python3-yaml \
     vim-common \
-    python3-pip \
     libsqlite3-dev \
-    python-cryptography \
-    python3-cryptography \
     libengine-pkcs11-openssl \
     libtasn1-6-dev \
     socat \
     libseccomp-dev \
     expect \
     gawk \
-    python-pip \
     libyaml-dev \
     opensc \
     libjson-c-dev \
@@ -53,16 +47,16 @@ RUN apt-get update && \
     uuid-dev \
     gnutls-bin
 
-RUN pip  install cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
-RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
-RUN pip install --upgrade pyasn1-modules
-RUN pip3 install --upgrade pyasn1-modules
-
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100
 RUN update-alternatives --install /usr/bin/scan-build scan-build /usr/bin/scan-build-6.0 100
 
 include(`autoconf.m4')
+
+# We want python3.7 since tpm2-pkcs11 needs it, and other projects need a valid python
+include(`python3.7.2.m4')
+RUN update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/python3.7 100
+RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
 
 # there's a bug where old versions of libpkcs11 engine were install to the wrong directory, but
 # we don't want to export the variable and kill off the default engines, so symlink the wrong one
@@ -73,10 +67,6 @@ RUN wget http://mirrors.edge.kernel.org/ubuntu/pool/main/a/automake-1.16/automak
     && sha256sum automake_1.16.3-1ubuntu1_all.deb | grep -q '^e73a9ad946973b45d9301bc86b4dd38d1875925c090bd53b975beccf7f5d2241' \
     && dpkg -i automake_1.16.3-1ubuntu1_all.deb
 
-
-include(`python3.7.2.m4')
-
-RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
 
 include(`ibmtpm1637.m4')
 include(`swtpm.m4')
