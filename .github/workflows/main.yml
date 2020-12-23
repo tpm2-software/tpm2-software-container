@@ -1,4 +1,4 @@
-name: Build and Publish Docker Images to Github Container Registry
+name: Build Status
 on:
   push
 jobs:
