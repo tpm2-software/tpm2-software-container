@@ -1,8 +1,8 @@
-FROM ubuntu:20.04
+FROM arm32v7/ubuntu:20.04
 
 include(`ubuntu_20.04_base_deps.m4')
-
 include(`pip3.m4')
+
 RUN pip3 install --upgrade pyasn1-modules
 RUN ln -s /usr/bin/python2 /usr/bin/python
 
