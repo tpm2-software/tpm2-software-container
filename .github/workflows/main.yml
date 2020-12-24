@@ -11,7 +11,8 @@ jobs:
           "fedora-30", "fedora-32",
           "opensuse-leap-15.2", "opensuse-leap",
           "ubuntu-16.04", "ubuntu-18.04", "ubuntu-20.04",
-          "ubuntu-20.04.arm32v7", "ubuntu-20.04.arm64v8"
+          "ubuntu-20.04.arm32v7", "ubuntu-20.04.arm64v8",
+          "fedora-32.ppc64le"
         ]
     steps:
       -
