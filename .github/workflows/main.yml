@@ -6,6 +6,7 @@ jobs:
     name: Build and Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         distro: [
           "fedora-30", "fedora-32",
