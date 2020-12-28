@@ -70,4 +70,9 @@ include(`swtpm.m4')
 include(`uthash.m4')
 include(`junit.m4')
 
+# make install goes into /usr/local/lib/pkgconfig which is non-standard
+# Set this so ./configure can find things and we don't have to worry about prefix changes
+# to build instructions
+ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+
 WORKDIR /
