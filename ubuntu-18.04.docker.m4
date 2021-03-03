@@ -24,8 +24,8 @@ RUN apt-get update && \
     doxygen \
     libdbus-1-dev \
     libglib2.0-dev \
-    clang-6.0 \
-    clang-tools-6.0 \
+    clang-9 \
+    clang-tools-9 \
     pandoc \
     lcov \
     libcurl4-openssl-dev \
@@ -61,8 +61,8 @@ RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
 RUN pip install --upgrade pyasn1-modules
 RUN pip3 install --upgrade pyasn1-modules
 
-RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
-RUN update-alternatives --install /usr/bin/scan-build scan-build /usr/bin/scan-build-6.0 100
+RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-9 100
+RUN update-alternatives --install /usr/bin/scan-build scan-build /usr/bin/scan-build-9 100
 
 include(`pip3.m4')
 include(`autoconf.m4')
