@@ -59,6 +59,7 @@ include(`python3.7.2.m4')
 # python3 to be the 3.7 version just installed.
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.7 0
 
+ARG CRYPTOGRAPHY_DONT_BUILD_RUST=1
 RUN pip3.7 install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11 setuptools
 
 # swtpm configure checks for pip3, so provide it via a symlink to pip3.7

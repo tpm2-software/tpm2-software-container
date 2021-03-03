@@ -56,6 +56,7 @@ RUN apt-get update && \
     opensc \
     gnutls-bin
 
+ARG CRYPTOGRAPHY_DONT_BUILD_RUST=1
 RUN pip  install cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
 RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
 RUN pip install --upgrade pyasn1-modules

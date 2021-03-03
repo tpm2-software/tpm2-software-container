@@ -56,6 +56,7 @@ include(`autoconf.m4')
 # We want python3.7 since tpm2-pkcs11 needs it, and other projects need a valid python
 include(`python3.7.2.m4')
 RUN update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/python3.7 100
+ARG CRYPTOGRAPHY_DONT_BUILD_RUST=1
 RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
 
 # there's a bug where old versions of libpkcs11 engine were install to the wrong directory, but
