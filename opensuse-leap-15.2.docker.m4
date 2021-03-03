@@ -55,6 +55,8 @@ RUN zypper -n in \
 include(`autoconf.m4')
 include(`python3.7.2.m4')
 
+include(`rust.m4')
+
 # Some other packages bring in python and python3, which at this time is too old, so we want
 # python3 to be the 3.7 version just installed.
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.7 0

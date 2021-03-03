@@ -51,4 +51,5 @@ RUN apt-get update && \
     libmbedtls-dev \
     uuid-dev \
     opensc \
-    gnutls-bin
+    gnutls-bin \
+    rustc

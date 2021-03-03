@@ -45,7 +45,8 @@ RUN apt-get update && \
     sqlite3 \
     libnss3-tools \
     uuid-dev \
-    gnutls-bin
+    gnutls-bin \
+    rustc
 
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100
