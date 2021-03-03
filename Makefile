@@ -4,6 +4,7 @@ SOURCE_SUFFIX := $(TARGET_SUFFIX).m4
 
 SOURCES := $(wildcard *$(SOURCE_SUFFIX))
 TARGETS := $(patsubst %$(SOURCE_SUFFIX),%$(TARGET_SUFFIX),$(SOURCES))
+MODULES := $(wildcard modules/*.m4)
 
 .PHONY: all
 all: $(TARGETS)
@@ -16,6 +17,7 @@ clean:
 debug:
 	@echo "SOURCES: $(SOURCES)"
 	@echo "TARGETS: $(TARGETS)"
+	@echo "MODULES: $(MODULES)"
 
-%$(TARGET_SUFFIX) : %$(SOURCE_SUFFIX)
+%$(TARGET_SUFFIX) : %$(SOURCE_SUFFIX) $(MODULES)
 	m4 -s -Imodules $< > $@
