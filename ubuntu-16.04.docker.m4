@@ -57,6 +57,7 @@ include(`autoconf.m4')
 # We want python3.7 since tpm2-pkcs11 needs it, and other projects need a valid python
 include(`python3.7.2.m4')
 RUN update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/python3.7 100
+RUN python3.7 -m pip install 'cryptography==3.2.1'
 RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
 
 # there's a bug where old versions of libpkcs11 engine were install to the wrong directory, but
@@ -64,9 +65,9 @@ RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-p
 RUN ln -s /usr/lib/ssl/engines/libpkcs11.so /usr/lib/x86_64-linux-gnu/openssl-1.0.0/engines/
 
 # Update automake to a non-broken AM_PYTHON_PATH checking version
-RUN wget http://mirrors.edge.kernel.org/ubuntu/pool/main/a/automake-1.16/automake_1.16.3-1ubuntu1_all.deb \
-    && sha256sum automake_1.16.3-1ubuntu1_all.deb | grep -q '^e73a9ad946973b45d9301bc86b4dd38d1875925c090bd53b975beccf7f5d2241' \
-    && dpkg -i automake_1.16.3-1ubuntu1_all.deb
+RUN wget http://http.us.debian.org/debian/pool/main/a/automake-1.16/automake_1.16.3-2_all.deb -O automake.deb \
+    && sha256sum automake.deb | grep -q '^720feb778ab6c33a28edf5815b747a7082b01ba358551cd35e99db8dfe73a136' \
+    && dpkg -i automake.deb
 
 
 include(`ibmtpm1637.m4')
