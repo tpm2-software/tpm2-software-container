@@ -7,7 +7,7 @@ on:
   push
 jobs:
   publish-image:
-    name: Build and Push Docker image to GitHub Packages
+    name: Publish Docker Images
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false

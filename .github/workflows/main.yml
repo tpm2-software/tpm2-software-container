@@ -6,7 +6,7 @@ on:
   [ pull_request, push ]
 jobs:
   publish-image:
-    name: Build and Push Docker image to GitHub Packages
+    name: Build Docker Images
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
