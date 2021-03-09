@@ -46,7 +46,8 @@ RUN apt-get update && \
     libnss3-tools \
     uuid-dev \
     gnutls-bin \
-    rustc
+    rustc \
+    acl
 
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100

@@ -55,9 +55,10 @@ RUN yum -y install \
     opensc \
     java-openjdk \
     java-openjdk-devel \
-    gnutls-utils \ 
+    gnutls-utils \
     uuid-devel \
-    python3-devel
+    python3-devel \
+    acl
 
 include(`pip3.m4')
 include(`autoconf.m4')
