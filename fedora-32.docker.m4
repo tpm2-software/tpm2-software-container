@@ -58,7 +58,8 @@ RUN dnf -y install \
     gnutls-utils \
     libuuid-devel \
     python3-devel \
-    openssl-pkcs11
+    openssl-pkcs11 \
+    acl
 
 include(`pip3.m4')
 include(`autoconf.m4')

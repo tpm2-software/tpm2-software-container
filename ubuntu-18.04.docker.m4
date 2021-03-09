@@ -55,7 +55,8 @@ RUN apt-get update && \
     uuid-dev \
     opensc \
     gnutls-bin \
-    rustc
+    rustc \
+    acl
 
 RUN pip  install cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
 RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules python-pkcs11

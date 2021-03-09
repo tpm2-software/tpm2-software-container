@@ -59,7 +59,8 @@ RUN dnf -y install \
     libuuid-devel \
     python3-devel \
     openssl-pkcs11 \
-    autoconf-archive
+    autoconf-archive \
+    acl
 
 include(`pip3.m4')
 include(`ibmtpm1637.m4')
