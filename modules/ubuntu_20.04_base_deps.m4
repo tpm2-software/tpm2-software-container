@@ -52,4 +52,5 @@ RUN apt-get update && \
     uuid-dev \
     opensc \
     gnutls-bin \
-    rustc
+    rustc \
+    acl
