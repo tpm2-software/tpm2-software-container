@@ -30,5 +30,4 @@ docker run --rm --env-file /path/to/tpm2-tss/.ci/docker.env -v /path/to/tpm2-tss
 
 ## Auto builds
 
-The repository is monitored by Docker Hub and the [tpm2software/tpm2-tss](https://hub.docker.com/r/tpm2software/tpm2-tss) image on the
-Hub is rebuilt when the repository changes.
+The repository is monitored by Github Actions and repository changes are built and submitted to Github Container Registry. The containers are listed on  [tpm2software/packages](https://github.com/orgs/tpm2-software/packages).
