@@ -33,11 +33,9 @@ RUN dnf -y install \
     lcov \
     libcurl-devel \
     dbus-x11 \
-    python3-pyyaml \
     vim \
     python3-pip \
     libsq3-devel \
-    python3-cryptography \
     iproute \
     procps \
     libasan \
@@ -62,6 +60,7 @@ RUN dnf -y install \
     autoconf-archive \
     acl
 
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
 include(`pip3.m4')
 include(`ibmtpm1637.m4')
 

@@ -6,3 +6,5 @@ RUN cd cpython-${pyver}/ \
 	&& ./configure \
 	&& make -j$(nproc) \
 	&& make altinstall
+RUN update-alternatives --install "/usr/bin/python3" "python3" "$(which python3.7)" 100
+RUN update-alternatives --install "/usr/bin/"pip3 "pip3" "$(which pip3.7)" 100

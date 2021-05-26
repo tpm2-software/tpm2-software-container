@@ -22,9 +22,6 @@ RUN zypper -n in \
     libcurl-devel \
     vim \
     clang7-checker \
-    python2-PyYAML \
-    python2 \
-    python2-cryptography \
     sqlite3-devel \
     dbus-1-devel \
     dbus-1-x11 \
