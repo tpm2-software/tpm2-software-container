@@ -30,13 +30,8 @@ RUN apt-get update && \
     lcov \
     libcurl4-openssl-dev \
     dbus-x11 \
-    python-yaml \
-    python3-yaml \
     vim-common \
-    python3-pip \
     libsqlite3-dev \
-    python-cryptography \
-    python3-cryptography \
     iproute2 \
     libtasn1-6-dev \
     socat \
@@ -49,8 +44,6 @@ RUN apt-get update && \
     default-jdk \
     sqlite3 \
     libnss3-tools \
-    python3-pip \
-    python-pip \
     libyaml-dev \
     uuid-dev \
     opensc \
@@ -58,20 +51,13 @@ RUN apt-get update && \
     rustc \
     acl
 
-RUN pip  install cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
-RUN pip3 install cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
-RUN pip install --upgrade pyasn1-modules
-RUN pip3 install --upgrade pyasn1-modules
-
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-9 100
 RUN update-alternatives --install /usr/bin/scan-build scan-build /usr/bin/scan-build-9 100
 
-include(`pip3.m4')
 include(`autoconf.m4')
 include(`ibmtpm1637.m4')
 include(`python3.7.2.m4')
-
-RUN python3.7 -m pip install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11
+include(`pip3.m4')
 
 include(`swtpm.m4')
 include(`uthash.m4')

@@ -28,12 +28,8 @@ RUN apt-get update && \
     lcov \
     libcurl4-openssl-dev \
     dbus-x11 \
-    python-yaml \
-    python3-yaml \
     vim-common \
     libsqlite3-dev \
-    python-cryptography \
-    python3-cryptography \
     iproute2 \
     libtasn1-6-dev \
     socat \
@@ -46,6 +42,7 @@ RUN apt-get update && \
     default-jdk \
     sqlite3 \
     libnss3-tools \
+    python3 \
     python3-pip \
     libyaml-dev \
     libmbedtls-dev \

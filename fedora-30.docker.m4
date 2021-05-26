@@ -33,11 +33,9 @@ RUN yum -y install \
     lcov \
     libcurl-devel \
     dbus-x11 \
-    python3-pyyaml \
     vim \
     python3-pip \
     libsq3-devel \
-    python3-cryptography \
     iproute \
     procps \
     libasan \
