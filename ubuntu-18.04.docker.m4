@@ -49,7 +49,8 @@ RUN apt-get update && \
     opensc \
     gnutls-bin \
     rustc \
-    acl
+    acl \
+    libjson-glib-dev
 
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-9 100
 RUN update-alternatives --install /usr/bin/scan-build scan-build /usr/bin/scan-build-9 100

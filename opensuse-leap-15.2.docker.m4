@@ -48,7 +48,8 @@ RUN zypper -n in \
     sqlite3 \
     openssl-engine-libp11 \
     gnutls \
-    acl
+    acl \
+    json-glib-devel
 
 include(`autoconf.m4')
 include(`python3.7.2.m4')

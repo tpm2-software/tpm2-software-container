@@ -50,4 +50,5 @@ RUN apt-get update && \
     opensc \
     gnutls-bin \
     rustc \
-    acl
+    acl \
+    libjson-glib-dev
