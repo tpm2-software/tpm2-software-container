@@ -56,7 +56,8 @@ RUN yum -y install \
     gnutls-utils \
     uuid-devel \
     python3-devel \
-    acl
+    acl \
+    json-glib-devel
 
 include(`pip3.m4')
 include(`autoconf.m4')

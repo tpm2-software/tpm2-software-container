@@ -58,7 +58,8 @@ RUN dnf -y install \
     python3-devel \
     openssl-pkcs11 \
     autoconf-archive \
-    acl
+    acl \
+    json-glib-devel
 
 ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
 include(`pip3.m4')
