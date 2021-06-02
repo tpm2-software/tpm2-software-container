@@ -49,7 +49,9 @@ RUN zypper -n in \
     openssl-engine-libp11 \
     gnutls \
     acl \
-    json-glib-devel
+    json-glib-devel \
+    python \
+    python-pip
 
 include(`autoconf.m4')
 include(`python3.7.2.m4')
@@ -60,10 +62,11 @@ include(`rust.m4')
 # python3 to be the 3.7 version just installed.
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.7 0
 
-RUN pip3.7 install pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11 setuptools
+# Python2 since OpenSuse default
+RUN python -m pip install --upgrade pip
+RUN python -m pip install pyyaml
 
-# swtpm configure checks for pip3, so provide it via a symlink to pip3.7
-RUN ln -s /usr/local/bin/pip3.7 /usr/local/bin/pip3
+include(`pip3.m4')
 
 # Fix Automake AM_PYTHON_PATH missing python3.7 interpreter
 COPY patches/python.patch /tmp/python.patch
