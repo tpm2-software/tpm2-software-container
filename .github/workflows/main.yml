@@ -16,7 +16,8 @@ jobs:
           "opensuse-leap-15.2", "opensuse-leap",
           "ubuntu-18.04", "ubuntu-20.04",
           "ubuntu-20.04.arm32v7", "ubuntu-20.04.arm64v8",
-          "fedora-32.ppc64le"
+          "fedora-32.ppc64le",
+          "ubuntu-20.04-ossl3", "fedora-32-ossl3", "opensuse-leap-ossl3"
         ]
     steps:
       -
