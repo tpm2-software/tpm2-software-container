@@ -17,7 +17,8 @@ jobs:
           "ubuntu-18.04", "ubuntu-20.04",
           "ubuntu-20.04.arm32v7", "ubuntu-20.04.arm64v8",
           "fedora-32.ppc64le",
-          "alpine-3.15"
+          "alpine-3.15",
+          "ubuntu-20.04-ossl3"
         ]
     steps:
       -
