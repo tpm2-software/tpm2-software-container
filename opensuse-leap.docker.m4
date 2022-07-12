@@ -49,9 +49,7 @@ RUN zypper -n in \
     openssl-engine-libp11 \
     gnutls \
     acl \
-    json-glib-devel \
-    python \
-    python-pip
+    json-glib-devel
 
 include(`autoconf.m4')
 include(`python3.7.2.m4')
@@ -61,10 +59,6 @@ include(`rust.m4')
 # Some other packages bring in python and python3, which at this time is too old, so we want
 # python3 to be the 3.7 version just installed.
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.7 0
-
-# Python2 since OpenSuse default
-RUN python -m pip install --upgrade pip
-RUN python -m pip install pyyaml
 
 include(`pip3.m4')
 
