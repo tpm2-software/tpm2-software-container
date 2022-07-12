@@ -4,6 +4,7 @@ RUN apk update && \
     apk upgrade && \
     apk add \
     autoconf-archive \
+    bash \
     cmocka-dev \
     net-tools \
     make \
