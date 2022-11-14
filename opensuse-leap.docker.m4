@@ -49,7 +49,8 @@ RUN zypper -n in \
     openssl-engine-libp11 \
     gnutls \
     acl \
-    json-glib-devel
+    json-glib-devel \
+    libusb-1.0-0-dev
 
 include(`autoconf.m4')
 include(`python3.7.2.m4')

@@ -58,7 +58,8 @@ RUN dnf -y install \
     python3-devel \
     openssl-pkcs11 \
     acl \
-    json-glib-devel
+    json-glib-devel \
+    libusb-1.0-0-dev
 
 include(`pip3.m4')
 include(`autoconf.m4')
