@@ -51,7 +51,8 @@ RUN apk update && \
     nss-tools \
     opensc \
     openjdk17-jdk \
-    openjdk17-jre
+    openjdk17-jre \
+    libusb-1.0-0-dev
 
 include(`autoconf.m4')
 include(`ibmtpm1637.m4')

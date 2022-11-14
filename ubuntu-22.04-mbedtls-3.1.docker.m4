@@ -52,7 +52,8 @@ RUN apt-get update && \
     gnutls-bin \
     rustc \
     acl \
-    libjson-glib-dev
+    libjson-glib-dev \
+    libusb-1.0-0-dev
 
 include(`pip3.m4')
 
