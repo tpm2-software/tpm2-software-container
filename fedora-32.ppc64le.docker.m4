@@ -59,7 +59,8 @@ RUN dnf -y install \
     openssl-pkcs11 \
     autoconf-archive \
     acl \
-    json-glib-devel
+    json-glib-devel \
+    libusb-devel
 
 # The last python cryptography version that allows no rust
 # per https://github.com/pyca/cryptography/blob/75be92de8e3bce9adcec42ef3967bed0d4500902/CHANGELOG.rst#3500---2021-09-29

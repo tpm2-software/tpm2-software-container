@@ -51,7 +51,8 @@ RUN zypper -n in \
     acl \
     json-glib-devel \
     python \
-    python-pip
+    python-pip \
+    libusb-devel
 
 include(`autoconf.m4')
 include(`python3.7.2.m4')
