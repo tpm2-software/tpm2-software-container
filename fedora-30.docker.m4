@@ -57,7 +57,8 @@ RUN yum -y install \
     uuid-devel \
     python3-devel \
     acl \
-    json-glib-devel
+    json-glib-devel \
+    libusb-devel
 
 include(`pip3.m4')
 include(`autoconf.m4')

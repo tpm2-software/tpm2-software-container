@@ -56,7 +56,8 @@ RUN dnf -y install \
     python3-devel \
     openssl-pkcs11 \
     acl \
-    json-glib-devel
+    json-glib-devel \
+    libusb-devel
 
 # make install goes into /usr/local/lib/pkgconfig which is non-standard
 # Set this so ./configure can find things and we don't have to worry about prefix changes

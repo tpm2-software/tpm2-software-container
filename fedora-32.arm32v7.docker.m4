@@ -57,7 +57,8 @@ RUN dnf -y install \
     libuuid-devel \
     python3-devel \
     openssl-pkcs11 \
-    acl
+    acl \
+    libusb-devel
 
 include(`pip3.m4')
 include(`autoconf.m4')
