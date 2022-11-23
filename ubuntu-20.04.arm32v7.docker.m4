@@ -6,6 +6,9 @@ include(`ubuntu_20.04_base_deps.m4')
 # per https://github.com/pyca/cryptography/blob/75be92de8e3bce9adcec42ef3967bed0d4500902/CHANGELOG.rst#3500---2021-09-29
 ARG PYCRYPTO_VERSION="3.4.8"
 ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
+# bcrypt now needs rust to, avoid it
+# https://pypi.org/project/bcrypt/4.0.1/
+ARG PYBCRYPT_VERSION="3.2.2"
 include(`pip3.m4')
 
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-10 100
