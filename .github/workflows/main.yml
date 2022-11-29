@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         distro: [
-          "fedora-30", "fedora-32", "fedora-32-ossl3", "fedora-34", "fedora-34-libressl",
+          "fedora-32", "fedora-32-ossl3", "fedora-34", "fedora-34-libressl",
           "opensuse-leap-15.2", "opensuse-leap", "opensuse-leap-ossl3",
           "ubuntu-18.04", "ubuntu-20.04",
           "ubuntu-20.04.arm32v7", "ubuntu-20.04.arm64v8",
