@@ -1,13 +1,10 @@
-#
-# We only publish docker files on a push AND if the tpm2-software is the org.
-# This way forks don't try to build AND publish
-#
-name: Publish
+name: Manual Publish
 on:
-  workflow_dispatch
+  workflow_dispatch:
     inputs:
       distro:
         description: 'The distro to build and publish'
+        type: string
         required: true
 jobs:
   publish-image:
