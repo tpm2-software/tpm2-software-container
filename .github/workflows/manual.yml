@@ -1,11 +1,6 @@
 name: Manual Publish
 on:
   workflow_dispatch:
-    secrets:
-        pat:
-          description: "A PAT With permissions to push to GHCR"
-          type: string
-          required: true
     inputs:
       distro:
         description: 'The distro to build and publish'
@@ -38,7 +33,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.pat }}
+          password: ${{ github.token }}
       -
         name: Push to GitHub Packages
         uses: docker/build-push-action@v2
