@@ -28,6 +28,7 @@ jobs:
         name: Check Diff for Changes
         uses: technote-space/get-diff-action@v6
         with:
+          BASE: refs/heads/master
           FILES: |
             ${{ matrix.distro }}.docker.m4
           PATTERNS: |
