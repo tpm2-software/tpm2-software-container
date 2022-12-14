@@ -1,5 +1,7 @@
 FROM arm64v8/ubuntu:20.04
 
+LABEL org.opencontainers.image.source https://github.com/tpm2-software/tpm2-software-container
+
 include(`ubuntu_20.04_base_deps.m4')
 include(`pip3.m4')
 
