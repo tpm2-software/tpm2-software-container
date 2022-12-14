@@ -1,6 +1,8 @@
 # Alpine 3.15 Dockerfile
 FROM alpine:3.15
 
+LABEL org.opencontainers.image.source https://github.com/tpm2-software/tpm2-software-container
+
 RUN apk update && \
     apk upgrade && \
     apk add \
