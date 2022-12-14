@@ -19,7 +19,7 @@ jobs:
           "ubuntu-20.04.arm32v7", "ubuntu-20.04.arm64v8",
           "fedora-32.ppc64le",
           "alpine-3.15",
-          "ubuntu-20.04-ossl3", "ubuntu-22.04", "ubuntu-22.04-mbedtls-3.1"
+          "ubuntu-22.04", "ubuntu-22.04-mbedtls-3.1"
         ]
     if: "github.repository_owner == 'tpm2-software'"
     steps:
