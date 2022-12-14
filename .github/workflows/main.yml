@@ -13,7 +13,7 @@ jobs:
       matrix:
         distro: [
           "fedora-32", "fedora-32-ossl3", "fedora-34", "fedora-34-libressl",
-          "opensuse-leap-15.2", "opensuse-leap", "opensuse-leap-ossl3",
+          "opensuse-leap-15.2", "opensuse-leap",
           "ubuntu-18.04", "ubuntu-20.04",
           "ubuntu-20.04.arm32v7", "ubuntu-20.04.arm64v8",
           "fedora-32.ppc64le",
