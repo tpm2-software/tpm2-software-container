@@ -1,5 +1,7 @@
 FROM opensuse/leap:15.2
 
+LABEL org.opencontainers.image.source https://github.com/tpm2-software/tpm2-software-container
+
 RUN zypper ref
 RUN zypper -n in \
     curl \
