@@ -1,5 +1,7 @@
 FROM ppc64le/fedora:32
 
+LABEL org.opencontainers.image.source https://github.com/tpm2-software/tpm2-software-container
+
 # can return 100 if packages need update
 RUN dnf check-update; \
     rc=$?; \
