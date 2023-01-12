@@ -55,7 +55,8 @@ RUN apt-get update && \
     rustc \
     acl \
     libjson-glib-dev \
-    libusb-1.0-0-dev
+    libusb-1.0-0-dev \
+    libftdi-dev
 
 include(`pip3.m4')
 
