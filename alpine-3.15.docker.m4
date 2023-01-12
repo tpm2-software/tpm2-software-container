@@ -55,7 +55,8 @@ RUN apk update && \
     opensc \
     openjdk17-jdk \
     openjdk17-jre \
-    libusb-dev
+    libusb-dev \
+    libftdi1-dev
 
 include(`autoconf.m4')
 include(`ibmtpm1637.m4')

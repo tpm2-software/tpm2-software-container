@@ -61,7 +61,8 @@ RUN dnf -y install \
     openssl-pkcs11 \
     acl \
     json-glib-devel \
-    libusb-devel
+    libusb-devel \
+    libftdi-devel
 
 include(`pip3.m4')
 include(`autoconf.m4')

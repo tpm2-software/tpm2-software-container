@@ -55,7 +55,8 @@ RUN apt-get update && \
     rustc \
     acl \
     libjson-glib-dev \
-    libusb-1.0-0-dev
+    libusb-1.0-0-dev \
+    libftdi-dev
 
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-9 100
 RUN update-alternatives --install /usr/bin/scan-build scan-build /usr/bin/scan-build-9 100

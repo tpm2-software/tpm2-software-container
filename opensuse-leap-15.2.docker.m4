@@ -54,7 +54,8 @@ RUN zypper -n in \
     json-glib-devel \
     python \
     python-pip \
-    libusb-devel
+    libusb-devel \
+    libftdi1-devel
 
 include(`autoconf.m4')
 include(`python3.7.2.m4')

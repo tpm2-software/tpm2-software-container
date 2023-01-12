@@ -59,7 +59,8 @@ RUN dnf -y install \
     openssl-pkcs11 \
     acl \
     json-glib-devel \
-    libusb-devel
+    libusb-devel \
+    libftdi-devel
 
 # make install goes into /usr/local/lib/pkgconfig which is non-standard
 # Set this so ./configure can find things and we don't have to worry about prefix changes
