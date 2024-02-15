@@ -64,7 +64,8 @@ RUN dnf -y install \
     json-glib-devel \
     libusb-devel \
     libftdi-devel \
-    python3-devel
+    python3-devel \
+    gmp-devel
 
 include(`pip3.m4')
 include(`autoconf.m4')
