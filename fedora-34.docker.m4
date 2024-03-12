@@ -63,7 +63,9 @@ RUN dnf -y install \
     acl \
     json-glib-devel \
     libusb-devel \
-    libftdi-devel
+    libftdi-devel \
+    python3-devel \
+    gmp-devel
 
 include(`pip3.m4')
 include(`autoconf.m4')
