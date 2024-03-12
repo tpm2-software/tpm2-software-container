@@ -49,11 +49,12 @@ RUN zypper -n in \
     patch \
     sqlite3 \
     openssl-engine-libp11 \
-    gnutls \
     acl \
     json-glib-devel \
     libusb-devel \
-    libftdi1-devel
+    libftdi1-devel \
+    libnettle-devel \
+    p11-kit-devel
 
 include(`autoconf.m4')
 include(`python3.7.2.m4')
@@ -80,5 +81,14 @@ include(`swtpm.m4')
 
 include(`uthash.m4')
 include(`junit.m4')
+
+# Install GnuTLS-3.8.3 from source
+RUN wget --no-verbose https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.3.tar.xz
+RUN tar -xf gnutls-3.8.3.tar.xz --one-top-level=/tmp/
+WORKDIR /tmp/gnutls-3.8.3
+RUN ./configure --with-included-unistring --disable-doc --disable-tests \
+        && make -j \
+        && make install \
+        && ldconfig
 
 WORKDIR /
