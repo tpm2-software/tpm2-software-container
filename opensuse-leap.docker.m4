@@ -54,7 +54,8 @@ RUN zypper -n in \
     libusb-devel \
     libftdi1-devel \
     libnettle-devel \
-    p11-kit-devel
+    p11-kit-devel \
+    openssh-common
 
 include(`autoconf.m4')
 include(`python3.7.2.m4')
