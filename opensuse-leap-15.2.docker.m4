@@ -55,7 +55,8 @@ RUN zypper -n in \
     python \
     python-pip \
     libusb-devel \
-    libftdi1-devel
+    libftdi1-devel \
+    gmp-devel
 
 include(`autoconf.m4')
 include(`python3.7.2.m4')
