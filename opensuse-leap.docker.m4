@@ -55,7 +55,8 @@ RUN zypper -n in \
     libftdi1-devel \
     libnettle-devel \
     p11-kit-devel \
-    openssh-common
+    openssh-common \
+    gmp-devel
 
 include(`autoconf.m4')
 include(`python3.7.2.m4')
@@ -74,7 +75,7 @@ RUN stat /usr/share/aclocal-1.15/python.m4
 RUN patch -d / -p1 < /tmp/python.patch
 RUN rm /tmp/python.patch
 
-include(`ibmtpm1637.m4')
+include(`ibmtpm1682.m4')
 
 ENV LIBTPMS_AUTOGEN_EXTRA="--libdir=/usr/lib64"
 ENV SWTPM_MAKE_EXTRA="CFLAGS=\"-I/usr/include/libseccomp/\""
