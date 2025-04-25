@@ -20,7 +20,7 @@ jobs:
           "fedora-32", "fedora-34",
           "opensuse-leap-15.2", "opensuse-leap", "opensuse-leap-ossl3",
           "fedora-32.ppc64le",
-          "alpine-3.15",
+          "alpine-3.15", "arch-linux",
           "ubuntu-22.04", "ubuntu-22.04-mbedtls-3.1", "ubuntu-24.04"
         ]
     if: "github.repository_owner == 'tpm2-software'"
