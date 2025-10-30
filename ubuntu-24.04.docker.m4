@@ -61,6 +61,7 @@ RUN apt-get update && \
     libusb-1.0-0-dev \
     libftdi-dev \
     uthash-dev \
+    clang-tidy \
     bear
 
 include(`pip3-withoutupgrade.m4')
