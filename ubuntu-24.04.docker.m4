@@ -60,7 +60,8 @@ RUN apt-get update && \
     libjson-glib-dev \
     libusb-1.0-0-dev \
     libftdi-dev \
-    uthash-dev
+    uthash-dev \
+    bear
 
 include(`pip3-withoutupgrade.m4')
 
