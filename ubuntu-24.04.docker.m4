@@ -30,6 +30,7 @@ RUN apt-get update && \
     libglib2.0-dev \
     clang \
     clang-tools \
+    clang-format \
     pandoc \
     lcov \
     libcurl4-openssl-dev \
