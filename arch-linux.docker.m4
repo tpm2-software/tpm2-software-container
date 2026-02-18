@@ -27,6 +27,7 @@ RUN pacman -Sy --noconfirm \
     libltdl \
     libusb \
     libftdi \
+    ibm-sw-tpm2 \
     swtpm \
     pkgfile \
     glib2 \

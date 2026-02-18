@@ -70,6 +70,7 @@ ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 include(`libressl.m4')
 include(`pip3.m4')
 include(`autoconf.m4')
+include(`ibmtpm1637.m4')
 include(`swtpm.m4')
 include(`uthash.m4')
 include(`junit.m4')
