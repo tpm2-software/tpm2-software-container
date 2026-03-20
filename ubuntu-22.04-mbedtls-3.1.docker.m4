@@ -1,6 +1,6 @@
 FROM ubuntu:jammy
 
-LABEL org.opencontainers.image.source https://github.com/tpm2-software/tpm2-software-container
+LABEL org.opencontainers.image.source="https://github.com/tpm2-software/tpm2-software-container"
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
