@@ -1,7 +1,7 @@
 # Alpine 3.19 Dockerfile
 FROM alpine:3.19
 
-LABEL org.opencontainers.image.source https://github.com/tpm2-software/tpm2-software-container
+LABEL org.opencontainers.image.source="https://github.com/tpm2-software/tpm2-software-container"
 
 RUN apk update && \
     apk upgrade && \
