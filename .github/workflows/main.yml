@@ -29,26 +29,26 @@ jobs:
         name: Check out the repo
         uses: actions/checkout@v4
       -
+        id: changes
         name: Check Diff for Changes
-        # TODO replace get-diff-action, as it is no longer maintained since 2023-11-24
-        uses: technote-space/get-diff-action@v6
+        uses: dorny/paths-filter@v4
         with:
-          FILES: |
-            ${{ matrix.distro }}.docker.m4
-          PATTERNS: |
-            modules/*
+          filters: |
+            build:
+              - ${{ matrix.distro }}.docker.m4
+              - modules/*
       -
         name: Build the Dockerfiles
         run: make -j $(nproc)
-        if: env.GIT_DIFF
+        if: steps.changes.outputs.build == 'true'
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
-        if: env.GIT_DIFF
+        if: steps.changes.outputs.build == 'true'
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-        if: env.GIT_DIFF
+        if: steps.changes.outputs.build == 'true'
       -
         name: Build Docker Images
         uses: docker/build-push-action@v6
@@ -56,4 +56,4 @@ jobs:
           push: false
           context: .
           file: ./${{ matrix.distro }}.docker
-        if: env.GIT_DIFF
+        if: steps.changes.outputs.build == 'true'
