@@ -43,7 +43,7 @@ jobs:
         if: steps.changes.outputs.build == 'true'
       -
         name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
         if: steps.changes.outputs.build == 'true'
       -
         name: Set up Docker Buildx
