@@ -30,6 +30,7 @@ RUN dnf -y install \
     gnulib \
     gnutls-utils \
     hamcrest \
+    iproute \
     java-latest-openjdk \
     java-latest-openjdk-devel \
     json-c-devel \
