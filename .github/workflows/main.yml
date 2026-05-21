@@ -16,7 +16,7 @@ jobs:
       distros: ${{ steps.set-matrix.outputs.distros }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - id: set-matrix
         run: |
