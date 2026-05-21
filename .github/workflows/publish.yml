@@ -62,7 +62,7 @@ jobs:
         if: steps.changes.outputs.build == 'true'
       -
         name: Push to GitHub Packages
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           push: 'true'
           context: .

@@ -51,7 +51,7 @@ jobs:
         if: steps.changes.outputs.build == 'true'
       -
         name: Build Docker Images
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           push: false
           context: .
