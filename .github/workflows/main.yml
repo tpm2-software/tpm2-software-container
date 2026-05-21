@@ -9,21 +9,32 @@ permissions:
   contents: read
 
 jobs:
-  publish-image:
+  generate-matrix:
+    runs-on: ubuntu-latest
+
+    outputs:
+      distros: ${{ steps.set-matrix.outputs.distros }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: set-matrix
+        run: |
+          DISTROS=$(find . -maxdepth 1 -name '*.docker.m4' \
+            | sed 's|^\./||' \
+            | sed 's|\.docker\.m4$||' \
+            | jq -R -s -c 'split("\n")[:-1]')
+
+          echo "distros=$DISTROS" >> $GITHUB_OUTPUT
+
+  build-image:
     name: Build Docker Images
+    needs: generate-matrix
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        distro: [
-          "alpine-3.15", "alpine-3.19",
-          "arch-linux",
-          "fedora-32.ppc64le", "fedora-41", "fedora-43",
-          "opensuse-leap-15.2", "opensuse-leap", "opensuse-leap-ossl3",
-          "ubuntu-20.04.arm32v7", "ubuntu-20.04.arm64v8", "ubuntu-20.04",
-          "ubuntu-20.04-ossl3", "ubuntu-22.04", "ubuntu-22.04-mbedtls-3.1",
-          "ubuntu-22.04-mbedtls-3.6", "ubuntu-24.04"
-        ]
+        distro: ${{ fromJson(needs.generate-matrix.outputs.distros) }}
     steps:
       -
         name: Check out the repo
