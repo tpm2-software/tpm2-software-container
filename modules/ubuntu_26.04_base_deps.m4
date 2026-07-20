@@ -1,5 +1,4 @@
 ENV DEBIAN_FRONTEND=noninteractive
-ENV LIBTPMS_AUTOGEN_EXTRA="CFLAGS='-Wno-error -Wno-discarded-qualifiers'"
 RUN apt-get update && \
     apt-get install -y \
     autoconf-archive \
@@ -23,8 +22,10 @@ RUN apt-get update && \
     doxygen \
     libdbus-1-dev \
     libglib2.0-dev \
-    clang-21 \
-    clang-tools-21 \
+    clang-22 \
+    clang-format-22 \
+    clang-tidy-22 \
+    clang-tools-22 \
     pandoc \
     lcov \
     libcurl4-openssl-dev \
@@ -41,6 +42,7 @@ RUN apt-get update && \
     libengine-pkcs11-openssl \
     default-jre \
     default-jdk \
+    junit4 \
     sqlite3 \
     libnss3-tools \
     python3 \
@@ -55,4 +57,10 @@ RUN apt-get update && \
     libjson-glib-dev \
     libusb-1.0-0-dev \
     libgmp-dev \
-    libftdi-dev
+    libftdi-dev \
+    swtpm \
+    uthash-dev \
+    bear
+
+RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-22 100
+RUN update-alternatives --install /usr/bin/scan-build scan-build /usr/bin/scan-build-22 100

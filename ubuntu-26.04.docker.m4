@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64 ubuntu:26.04
+FROM ubuntu:26.04
 
 LABEL org.opencontainers.image.source="https://github.com/tpm2-software/tpm2-software-container"
 

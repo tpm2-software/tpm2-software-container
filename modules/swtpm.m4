@@ -1,10 +1,12 @@
 ARG libtpms_version=0.10.2
 ARG swtpm_version=0.10.1
+COPY patches/libtpms.patch /tmp/libtpms.patch
 RUN cd /tmp/ \
     && wget $WGET_EXTRA_FLAGS https://github.com/stefanberger/libtpms/archive/refs/tags/v$libtpms_version.tar.gz \
     && tar xv --no-same-owner -f v$libtpms_version.tar.gz \
 	&& cd /tmp/libtpms-$libtpms_version \
 	&& ./autogen.sh --prefix=/usr $LIBTPMS_AUTOGEN_EXTRA --with-openssl --with-tpm2 \
+        && (command -d patch && patch -p1 < /tmp/libtpms.patch || true) \
 	&& make -j$(nproc) \
 	&& make install \
     && cd /tmp/ \
@@ -18,4 +20,5 @@ RUN cd /tmp/ \
 	&& make install \
     && cd /tmp/ \
 	&& rm -fr /tmp/swtpm-$swtpm_version \
-    && rm -f /tmp/v$swtpm_version.tar.gz
+    && rm -f /tmp/v$swtpm_version.tar.gz \
+    && rm /tmp/libtpms.patch
