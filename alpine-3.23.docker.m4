@@ -1,5 +1,5 @@
-# Alpine 3.19 Dockerfile
-FROM alpine:3.19
+# Alpine 3.23 Dockerfile
+FROM alpine:3.23
 
 LABEL org.opencontainers.image.source="https://github.com/tpm2-software/tpm2-software-container"
 
@@ -63,6 +63,3 @@ include(`ibmtpm1682.m4')
 include(`swtpm.m4')
 
 WORKDIR /
-
-
-    
