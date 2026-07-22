@@ -1,4 +1,5 @@
 ENV DEBIAN_FRONTEND=noninteractive
+ENV LIBTPMS_AUTOGEN_EXTRA="CFLAGS='-Wno-error -Wno-discarded-qualifiers'"
 RUN apt-get update && \
     apt-get install -y \
     autoconf-archive \
@@ -22,8 +23,8 @@ RUN apt-get update && \
     doxygen \
     libdbus-1-dev \
     libglib2.0-dev \
-    clang-10 \
-    clang-tools-10 \
+    clang-21 \
+    clang-tools-21 \
     pandoc \
     lcov \
     libcurl4-openssl-dev \
