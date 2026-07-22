@@ -1,4 +1,4 @@
-FROM fedora:43
+FROM --platform=linux/ppc64le fedora:44
 
 LABEL org.opencontainers.image.source="https://github.com/tpm2-software/tpm2-software-container"
 
