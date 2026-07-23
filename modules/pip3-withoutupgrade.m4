@@ -7,4 +7,4 @@ ENV PIP_BREAK_SYSTEM_PACKAGES=1
 RUN pkgs="cryptography==$PYCRYPTO_VERSION pyyaml cpp-coveralls pyasn1 pyasn1_modules python-pkcs11 compiledb \
           bcrypt==$PYBCRYPT_VERSION setuptools"; \
     pkgs=$(echo "$pkgs" | sed -E 's/==\s+/ /g'); \
-    python3 -m pip install $pkgs --break-system-packages
+    python3 -m pip install --no-cache-dir $pkgs --break-system-packages

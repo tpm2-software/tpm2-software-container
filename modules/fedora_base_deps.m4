@@ -63,4 +63,5 @@ RUN dnf -y install \
     uthash-devel \
     wget \
     && update-crypto-policies --set=LEGACY \
-    && python3 -m pip install python-pkcs11
+    && python3 -m pip install --no-cache-dir python-pkcs11 \
+    && dnf clean all && rm -rf /var/cache/dnf

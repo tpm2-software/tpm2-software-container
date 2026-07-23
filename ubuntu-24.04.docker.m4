@@ -64,7 +64,8 @@ RUN apt-get update && \
     libgmp-dev \
     uthash-dev \
     clang-tidy \
-    bear
+    bear \
+    && rm -rf /var/lib/apt/lists/*
 
 include(`pip3-withoutupgrade.m4')
 

@@ -56,7 +56,8 @@ RUN zypper -n in \
     libusb-devel \
     libftdi1-devel \
     openssh-common \
-    gmp-devel
+    gmp-devel \
+    && zypper clean --all
 
 include(`autoconf.m4')
 

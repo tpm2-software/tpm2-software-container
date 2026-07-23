@@ -37,7 +37,8 @@ RUN pacman -Sy --noconfirm \
     perl \
     pandoc \
     lcov \
-    wget
+    wget && \
+    pacman -Scc --noconfirm
 RUN ln -s /usr/bin/core_perl/shasum /usr/bin/
 include(`ibmtpm1682.m4')
 

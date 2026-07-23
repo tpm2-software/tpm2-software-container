@@ -1,4 +1,7 @@
-RUN dnf -y install \
+
+RUN dnf -y install epel-release dnf-plugins-core \
+    && dnf config-manager --set-enabled crb \
+    && dnf -y install \
     acl \
     autoconf-archive \
     automake \
@@ -61,4 +64,6 @@ RUN dnf -y install \
     uthash-devel \
     vim \
     wget \
-    && python3 -m pip install python-pkcs11
+    && python3 -m pip install --no-cache-dir python-pkcs11 \
+    && dnf clean all \
+    && rm -rf /var/cache/dnf

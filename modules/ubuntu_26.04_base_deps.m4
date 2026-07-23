@@ -60,7 +60,8 @@ RUN apt-get update && \
     libftdi-dev \
     swtpm \
     uthash-dev \
-    bear
+    bear \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-22 100
 RUN update-alternatives --install /usr/bin/scan-build scan-build /usr/bin/scan-build-22 100

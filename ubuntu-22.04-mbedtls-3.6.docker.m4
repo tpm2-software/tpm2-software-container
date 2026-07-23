@@ -57,7 +57,8 @@ RUN apt-get update && \
     libjson-glib-dev \
     libusb-1.0-0-dev \
     libftdi-dev \
-    libgmp-dev
+    libgmp-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 include(`pip3.m4')
 

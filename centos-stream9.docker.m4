@@ -2,9 +2,6 @@ FROM quay.io/centos/centos:stream9
 
 LABEL org.opencontainers.image.source="https://github.com/tpm2-software/tpm2-software-container"
 
-RUN dnf -y install epel-release dnf-plugins-core \
-    && dnf config-manager --set-enabled crb
-
 define(`CENTOS_JAVA', `java-17-openjdk java-17-openjdk-devel')dnl
 define(`CENTOS_LIBUSB_DEVEL', `libusb-devel')dnl
 define(`CENTOS_OPENSSL_PKCS11', `openssl-pkcs11')dnl

@@ -59,7 +59,8 @@ RUN apt-get update && \
     libusb-1.0-0-dev \
     libftdi-dev \
     libgmp-dev \
-    uthash-dev
+    uthash-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 include(`pip3.m4')
 
