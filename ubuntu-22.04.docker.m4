@@ -5,68 +5,64 @@ LABEL org.opencontainers.image.source="https://github.com/tpm2-software/tpm2-sof
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y \
-    autoconf-archive \
-    curl \
-    libcmocka0 \
-    libcmocka-dev \
-    net-tools \
-    build-essential \
-    git \
-    pkg-config \
-    gcc \
-    g++ \
-    m4 \
-    libtool \
-    automake \
-    libgcrypt20-dev \
-    libssl-dev \
+    acl \
     autoconf \
-    gnulib \
-    wget \
-    doxygen \
-    libdbus-1-dev \
-    libglib2.0-dev \
+    autoconf-archive \
+    automake \
+    build-essential \
     clang \
     clang-tools \
-    pandoc \
-    lcov \
-    libcurl4-openssl-dev \
+    curl \
     dbus-x11 \
-    vim-common \
-    libsqlite3-dev \
-    iproute2 \
-    libtasn1-6-dev \
-    socat \
-    libseccomp-dev \
-    expect \
-    gawk \
-    libjson-c-dev \
-    libengine-pkcs11-openssl \
-    default-jre \
     default-jdk \
-    sqlite3 \
+    default-jre \
+    doxygen \
+    expect \
+    g++ \
+    gawk \
+    gcc \
+    git \
+    gnulib \
+    gnutls-bin \
+    iproute2 \
+    lcov \
+    libcmocka-dev \
+    libcmocka0 \
+    libcurl4-openssl-dev \
+    libdbus-1-dev \
+    libengine-pkcs11-openssl \
+    libftdi-dev \
+    libgcrypt20-dev \
+    libglib2.0-dev \
+    libgmp-dev \
+    libjson-c-dev \
+    libjson-glib-dev \
+    libmbedtls-dev \
     libnss3-tools \
+    libseccomp-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libtasn1-6-dev \
+    libtool \
+    libusb-1.0-0-dev \
+    libyaml-dev \
+    m4 \
+    net-tools \
+    opensc \
+    pandoc \
+    pkg-config \
     python3 \
     python3-pip \
-    libyaml-dev \
-    libmbedtls-dev \
-    uuid-dev \
-    opensc \
-    gnutls-bin \
     rustc \
-    acl \
-    libjson-glib-dev \
-    libusb-1.0-0-dev \
-    libftdi-dev \
-    libgmp-dev \
+    socat \
+    sqlite3 \
     uthash-dev \
+    uuid-dev \
+    vim-common \
+    wget \
     && rm -rf /var/lib/apt/lists/*
 
-include(`pip3.m4')
-
-include(`autoconf.m4')
 include(`ibmtpm1682.m4')
 include(`swtpm.m4')
-include(`junit.m4')
 
 WORKDIR /

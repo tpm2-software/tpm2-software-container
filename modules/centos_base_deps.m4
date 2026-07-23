@@ -2,68 +2,53 @@
 RUN dnf -y install epel-release dnf-plugins-core \
     && dnf config-manager --set-enabled crb \
     && dnf -y install \
+    CENTOS_LIBUSB_DEVEL \
     acl \
     autoconf-archive \
     automake \
-    clang \
-    clang-analyzer \
-    clang-tools-extra \
     dbus-devel \
     dbus-libs \
     dbus-x11 \
-    doxygen \
     expect \
     file \
     gawk \
     gcc \
-    gmp-devel \
     git \
     glib2-devel \
+    gmp-devel \
     gnulib-devel \
     gnutls-utils \
-    hamcrest \
     iproute \
-    CENTOS_JAVA \
     json-c-devel \
     json-glib-devel \
-    junit \
-    lcov \
     libasan \
     libcmocka \
     libcmocka-devel \
     libcurl-devel \
     libftdi-devel \
     libgcrypt-devel \
+    liboath-devel \
     libseccomp-devel \
-    sqlite-devel \
     libtasn1-devel \
     libtool \
     libubsan \
-    CENTOS_LIBUSB_DEVEL \
     libuuid-devel \
     libyaml-devel \
     m4 \
     net-tools \
-    nss-tools \
     opensc \
     openssl \
-    openssl-devel CENTOS_OPENSSL_PKCS11 \
-    pandoc \
+    openssl-devel \
     perl-Digest-SHA \
     pkg-config \
     procps \
-    python3-bcrypt \
-    python3-cryptography \
     python3-devel \
-    python3-pip \
-    python3-pyasn1 \
-    python3-pyasn1-modules \
     python3-pyyaml \
-    python3-setuptools \
+    qrencode-devel \
     socat \
+    sqlite-devel \
     uthash-devel \
     vim \
     wget \
-    && python3 -m pip install --no-cache-dir python-pkcs11 \
     && dnf clean all \
     && rm -rf /var/cache/dnf

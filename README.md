@@ -53,3 +53,19 @@ docker run -it --rm ghcr.io/tpm2-software/fedora-32 /bin/bash
 # With Podman
 podman run -it --rm ghcr.io/tpm2-software/fedora-32 /bin/bash
 ```
+
+## Structure
+
+Standard distro/version images have profile-tag variants using the same base name:
+
+- `<distro>-<version>-dev`
+- `<distro>-<version>-pkcs11`
+
+This intentionally excludes architecture-specific tags and specialized images such as
+`*-mbedtls-*`, which remain single-purpose variants.
+
+Profile intent:
+
+- base tag (`<distro>-<version>`): lean/default CI dependencies
+- dev tag (`<distro>-<version>-dev`): base plus development/tooling extras
+- pkcs11 tag (`<distro>-<version>-pkcs11`): dev plus pkcs11/python/java extras

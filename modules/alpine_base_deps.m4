@@ -1,53 +1,48 @@
 RUN apk upgrade --no-cache && \
     apk add --no-cache \
+    acl \
+    autoconf \
     autoconf-archive \
+    automake \
     bash \
     cmocka-dev \
-    net-tools \
-    make \
-    git \
-    gcc \
-    g++ \
-    m4 \
-    libtool \
-    automake \
-    autoconf \
-    wget \
-    doxygen \
-    dbus-dev \
-    glib-dev \
-    clang \
-    clang-analyzer \
-    clang-extra-tools \
-    json-c-dev  \
-    iproute2 \
     coreutils \
-    uthash-dev \
     curl-dev \
-    python3-dev \
-    py3-yaml \
-    perl-utils \
+    dbus \
+    dbus-dev \
+    dbus-x11 \
+    expect \
+    g++ \
+    gawk \
+    gcc \
+    git \
+    glib-dev \
+    gnutls-dev \
+    grep \
+    gzip \
+    iproute2 \
+    json-c-dev  \
+    json-glib-dev \
+    libftdi1-dev \
+    libqrencode-dev \
+    libseccomp-dev \
+    libtasn1-dev \
+    libtool \
+    libusb-dev \
+    m4 \
+    make \
+    net-tools \
+    oath-toolkit-dev \
+    opensc \
     openssl \
     openssl-dev \
-    acl \
-    xxd \
-    grep \
-    dbus \
-    vim \
-    dbus-x11 \
+    perl-utils \
     procps \
-    libtasn1-dev \
-    json-glib-dev \
-    gnutls-dev \
-    expect \
+    py3-yaml \
+    python3-dev \
+    sed \
     socat \
-    libseccomp-dev \
-    gawk \
-    gzip \
-    yaml-dev \
-    nss-tools \
-    opensc \
-    openjdk17-jdk \
-    openjdk17-jre \
-    libusb-dev \
-    libftdi1-dev
+    tar \
+    uthash-dev \
+    wget \
+    yaml-dev

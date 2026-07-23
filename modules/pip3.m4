@@ -9,4 +9,5 @@ RUN pkgs="cryptography==$PYCRYPTO_VERSION pyyaml cpp-coveralls pyasn1 pyasn1_mod
     echo $pkgs; \
     pkgs=$(echo "$pkgs" | sed -E 's/==\s+/ /g'); \
     python3 -m pip install --no-cache-dir $pkgs; \
-    python3 -m pip install --no-cache-dir python-pkcs11
+      python3 -m pip install --no-cache-dir python-pkcs11; \
+      rm -rf /root/.cache/pip

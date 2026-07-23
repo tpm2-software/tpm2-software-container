@@ -1,66 +1,45 @@
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y \
-    autoconf-archive \
-    curl \
-    libcmocka0 \
-    libcmocka-dev \
-    net-tools \
-    build-essential \
-    git \
-    pkg-config \
-    gcc \
-    g++ \
-    m4 \
-    libtool \
-    automake \
-    libgcrypt20-dev \
-    libssl-dev \
     autoconf \
-    gnulib \
-    wget \
-    doxygen \
-    libdbus-1-dev \
-    libglib2.0-dev \
+    autoconf-archive \
+    automake \
+    build-essential \
     clang-22 \
-    clang-format-22 \
-    clang-tidy-22 \
     clang-tools-22 \
-    pandoc \
-    lcov \
-    libcurl4-openssl-dev \
+    curl \
     dbus-x11 \
-    vim-common \
-    libsqlite3-dev \
-    iproute2 \
-    libtasn1-6-dev \
-    socat \
-    libseccomp-dev \
     expect \
+    g++ \
     gawk \
+    gcc \
+    git \
+    gnulib \
+    iproute2 \
+    libcmocka-dev \
+    libcmocka0 \
+    libcurl4-openssl-dev \
+    libdbus-1-dev \
+    libgcrypt20-dev \
+    libglib2.0-dev \
     libjson-c-dev \
-    libengine-pkcs11-openssl \
-    default-jre \
-    default-jdk \
-    junit4 \
-    sqlite3 \
-    libnss3-tools \
-    python3 \
-    python3-pip \
+    libseccomp-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libtasn1-6-dev \
+    libtool \
+    libtpms-dev \
     libyaml-dev \
-    libmbedtls-dev \
-    uuid-dev \
+    m4 \
+    net-tools \
     opensc \
-    gnutls-bin \
-    rustc \
-    acl \
-    libjson-glib-dev \
-    libusb-1.0-0-dev \
-    libgmp-dev \
-    libftdi-dev \
+    pkg-config \
+    python3 \
+    socat \
+    sqlite3 \
     swtpm \
     uthash-dev \
-    bear \
+    wget \
     && rm -rf /var/lib/apt/lists/*
 
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-22 100

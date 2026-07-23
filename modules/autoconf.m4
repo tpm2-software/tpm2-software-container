@@ -7,4 +7,3 @@ RUN cd /tmp \
 	&& ./configure --prefix=/usr \
 	&& make -j $(nproc) && make install \
 	&& rm -fr /tmp/$autoconf_archive.tar.xz /tmp/$autoconf_archive
-

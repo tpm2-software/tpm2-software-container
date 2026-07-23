@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      distros: ${{ steps.set-matrix.outputs.distros }}
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
 
     steps:
       - uses: actions/checkout@v7
@@ -24,9 +24,11 @@ jobs:
           DISTROS=$(find . -maxdepth 1 -name '*.docker.m4' \
             | sed 's|^\./||' \
             | sed 's|\.docker\.m4$||' \
+            | grep -Ev '(-dev|-pkcs11)$' \
             | jq -R -s -c 'split("\n")[:-1]')
 
-          echo "distros=$DISTROS" >> $GITHUB_OUTPUT
+          MATRIX=$(jq -cn --argjson distros "$DISTROS" '{distro: $distros}')
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
 
   publish-image:
     name: Publish Docker Images
@@ -34,8 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        distro: ${{ fromJson(needs.generate-matrix.outputs.distros) }}
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
 
     if: "github.repository_owner == 'tpm2-software'"
     steps:
@@ -50,6 +51,8 @@ jobs:
           filters: |
             build:
               - ${{ matrix.distro }}.docker.m4
+              - ${{ matrix.distro }}-dev.docker.m4
+              - ${{ matrix.distro }}-pkcs11.docker.m4
               - modules/*
       -
         name: Build the Dockerfiles
@@ -80,3 +83,21 @@ jobs:
           file: ./${{ matrix.distro }}.docker
           tags: ghcr.io/${{ github.repository_owner }}/${{ matrix.distro }}:latest
         if: steps.changes.outputs.build == 'true'
+      -
+        name: Push -dev to GitHub Packages
+        uses: docker/build-push-action@v7
+        with:
+          push: 'true'
+          context: .
+          file: ./${{ matrix.distro }}-dev.docker
+          tags: ghcr.io/${{ github.repository_owner }}/${{ matrix.distro }}-dev:latest
+        if: steps.changes.outputs.build == 'true' && hashFiles(format('{0}-dev.docker.m4', matrix.distro)) != ''
+      -
+        name: Push -pkcs11 to GitHub Packages
+        uses: docker/build-push-action@v7
+        with:
+          push: 'true'
+          context: .
+          file: ./${{ matrix.distro }}-pkcs11.docker
+          tags: ghcr.io/${{ github.repository_owner }}/${{ matrix.distro }}-pkcs11:latest
+        if: steps.changes.outputs.build == 'true' && hashFiles(format('{0}-pkcs11.docker.m4', matrix.distro)) != ''

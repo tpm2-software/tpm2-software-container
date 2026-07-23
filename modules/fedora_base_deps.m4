@@ -2,14 +2,10 @@ RUN dnf -y install \
     acl \
     autoconf-archive \
     automake \
-    clang \
-    clang-analyzer \
-    clang-tools-extra \
     crypto-policies-scripts \
     dbus-devel \
     dbus-libs \
     dbus-x11 \
-    doxygen \
     expect \
     gawk \
     gcc \
@@ -18,14 +14,9 @@ RUN dnf -y install \
     gmp-devel \
     gnulib \
     gnutls-utils \
-    hamcrest \
     iproute \
-    java-latest-openjdk \
-    java-latest-openjdk-devel \
     json-c-devel \
     json-glib-devel \
-    junit \
-    lcov \
     libasan \
     libcmocka \
     libcmocka-devel \
@@ -33,6 +24,7 @@ RUN dnf -y install \
     libftdi-devel \
     libgcrypt-devel \
     libseccomp-devel \
+    libtpms-devel \
     libsq3-devel \
     libtasn1-devel \
     libtool \
@@ -42,26 +34,16 @@ RUN dnf -y install \
     libyaml-devel \
     m4 \
     net-tools \
-    nss-tools \
     opensc \
     openssl \
     openssl-devel \
-    openssl-pkcs11 \
-    pandoc \
     perl-Digest-SHA \
     pkg-config \
     procps \
-    python3-bcrypt \
-    python3-cryptography \
     python3-devel \
-    python3-pip \
-    python3-pyasn1 \
-    python3-pyasn1-modules \
-    python3-setuptools \
     socat \
     swtpm \
     uthash-devel \
     wget \
     && update-crypto-policies --set=LEGACY \
-    && python3 -m pip install --no-cache-dir python-pkcs11 \
     && dnf clean all && rm -rf /var/cache/dnf

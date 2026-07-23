@@ -13,6 +13,5 @@ include(`swtpm.m4')
 # Set this so ./configure can find things and we don't have to worry about prefix changes
 # to build instructions
 ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-ENV CLASSPATH=/usr/share/java/hamcrest/hamcrest.jar:/usr/share/java/junit.jar
 
 WORKDIR /

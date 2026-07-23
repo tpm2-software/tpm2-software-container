@@ -11,4 +11,5 @@ RUN cd /tmp \
 	&& sed -i 's/-DTPM_NUVOTON/-DTPM_NUVOTON $(CFLAGS)/' makefile \
 	&& CFLAGS="-DNV_MEMORY_SIZE=32768 -DMIN_EVICT_OBJECTS=7" make -j$(nproc) \
 	&& cp tpm_server /usr/local/bin \
+	&& strip /usr/local/bin/tpm_server || true \
 	&& rm -fr /tmp/$ibmtpm_name
