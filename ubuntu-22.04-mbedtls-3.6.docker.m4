@@ -61,7 +61,6 @@ RUN apt-get update && \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-include(`autoconf.m4')
 include(`ibmtpm1682.m4')
 include(`swtpm.m4')
 include(`pip3.m4')

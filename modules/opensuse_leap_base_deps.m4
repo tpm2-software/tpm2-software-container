@@ -1,6 +1,8 @@
 RUN zypper ref
 RUN zypper -n in \
     acl \
+    autoconf \
+    autoconf-archive \
     automake \
     curl \
     dbus-1-devel \
