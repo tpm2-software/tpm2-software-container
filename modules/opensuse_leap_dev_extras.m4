@@ -1,5 +1,6 @@
 RUN zypper -n in \
     cargo \
+    doxygen \
     clang \
     clang-tools \
     doxygen \
