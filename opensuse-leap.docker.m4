@@ -13,4 +13,3 @@ ENV LIBTPMS_AUTOGEN_EXTRA="--libdir=/usr/lib64"
 ENV SWTPM_MAKE_EXTRA="CFLAGS=\"-I/usr/include/libseccomp/\""
 include(`swtpm.m4')
 
-include(`uthash.m4')

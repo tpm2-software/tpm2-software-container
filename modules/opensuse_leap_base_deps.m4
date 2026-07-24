@@ -39,6 +39,7 @@ RUN zypper -n in \
     socat \
     sqlite3 \
     sqlite3-devel \
+    uthash-devel \
     wget \
     which \
     xz \
