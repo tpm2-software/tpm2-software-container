@@ -17,6 +17,9 @@ RUN apt-get update && \
     rustc \
     uuid-dev \
     vim-common \
+    && update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-22 100 \
+    && update-alternatives --install /usr/bin/run-clang-tidy run-clang-tidy /usr/bin/run-clang-tidy-22 100 \
+    && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-22 100 \
     && rm -rf /var/lib/apt/lists/*
 ENV PIP_BREAK_SYSTEM_PACKAGES=1
 RUN python3 -m pip install --no-cache-dir --break-system-packages \
