@@ -6,7 +6,6 @@ RUN dnf -y install \
     nss-tools \
     python3-bcrypt \
     python3-cryptography \
-    python3-pip \
     python3-pyasn1 \
     python3-pyasn1-modules \
     python3-setuptools \
