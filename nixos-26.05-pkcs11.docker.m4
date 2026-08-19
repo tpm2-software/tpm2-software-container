@@ -25,7 +25,6 @@ define(`NIX_PKCS11_PYTHON_EXTRA', `
 include(`nixos-26.05-dev.docker.m4')
 
 # Dependencies built by the tpm2-pkcs11 CI are installed below /usr/local.
-ENV LD_LIBRARY_PATH=/usr/local/lib
 ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig
 
 # The tpm2-pkcs11 integration tests use `arch` to determine the machine

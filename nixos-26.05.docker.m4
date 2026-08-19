@@ -38,6 +38,7 @@ pkgs.mkShell {
     which
     git
     swtpm
+    libtpms
     shadow
     clang
     clang-tools
@@ -65,6 +66,7 @@ ifdef(`NIX_PKCS11_PYTHON_EXTRA', `NIX_PKCS11_PYTHON_EXTRA')
   buildInputs = with pkgs; [
     clang
     clang-tools
+    libtpms
     openssl
     curl
     json_c
@@ -77,6 +79,8 @@ ifdef(`NIX_PKCS11_PYTHON_EXTRA', `NIX_PKCS11_PYTHON_EXTRA')
 ifdef(`NIX_DEV_BUILD_EXTRA', `NIX_DEV_BUILD_EXTRA')
 ifdef(`NIX_PKCS11_BUILD_EXTRA', `NIX_PKCS11_BUILD_EXTRA')
   ];
+  LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ pkgs.libtpms ]
+                    + ":/usr/local/lib";
 }
 EOF
 
